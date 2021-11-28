@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bisita liburua: iruzkin berria.</title>
+		<meta charset=UTF-8">
+		<script type="text/javascript" src="bisita_liburua.js"></script>
+	</head>
+	<body>
+		<h1>Gehitu iruzkin berri bat</h1>
+		<p>Iruzkin berri bat idazteko bete hurrengo formularioa:</p>
+		<form action="berria.php" method="post">
+			Izena(*): <input type="text" name="izena"> <br/>
+			E-posta: <input type="text" name="eposta">
+			<input type="checkbox" name="pribatua" id="pr"> <label for="pr">Nire e-posta helbidea ezkutuan mantendu nahi dut.</label><br>
+			Iruzkina(*): <br>
+			<textarea name="iruzkina" rows="15" cols="80"></textarea><br>
+			<input type="submit" onclick="return balidatu(this.form);">
+		</form>
+	</body>
+</html>
