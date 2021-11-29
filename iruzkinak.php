@@ -1,15 +1,15 @@
 <?php
-	require_once("bisita_liburua.inc");
+	require_once("musikantzun.inc");
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bisita liburua: iruzkinak.</title>
-		<meta charset=UTF-8">
-		<link rel="stylesheet" href="bisita_liburua.css" type="text/css">
+		<title>Musikantzun: musika entzun.</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="musika_igo.css" type="text/css">
 	</head>
 	<body>
-		<h1>Bisita liburua</h1>
+		<h1>Musikantzun/h1>
 		<?php
 			if(!file_exists($BL_FILE))
 			{

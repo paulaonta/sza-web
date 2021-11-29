@@ -1,6 +1,5 @@
 <?php
-	require_once('bisita_liburua.inc');
-	
+	require_once("musikantzun.inc");	
 	// Jaso formularioko balioak eta testuei hasierako eta amaierako hutsuneak kendu (trim).
 	$izena=trim($_POST['izena']);
 	$eposta=trim($_POST['eposta']);
@@ -22,7 +21,7 @@
 		else
 			echo '<title>Errorea iruzkin berria jasotzean</title>';
 	?>
-		<meta charset=UTF-8">
+		<meta charset="UTF-8">
 	</head>
 	<body>
 	<?php

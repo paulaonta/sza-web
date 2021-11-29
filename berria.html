@@ -21,11 +21,11 @@
 		<h2>Igo nahi duzun musika</h2>
 		<p>Abesti bat igotzeko bete hurrengo formularioa:</p>
 		<form action="berria.php" method="post">
-			Izenburua (*): <input type="text" name="izenburu"> <br/>
+			Izenburua (*): <input type="text" name="izenburua"> <br/>
 			Egilea(k) (*): <input type="text" name="egilea"> <br/>
 			Albuma: <input type="text" name="album"><br/>
-			Portada: <input type="file" name="portada"><br/>
-			Abestia (*): <input type="file" name="abestia"><br/>
+			Portada: <input type="file" name="portada" accept=".png, .jpg, .jpeg"><br/>
+			Abestia (*): <input type="file" name="abestia" accept="audio/*"><br/>
 			<input type="submit" onclick="return balidatu(this.form);">
 		</form>
 	</body>

@@ -1,0 +1,11 @@
+<!ELEMENT egileak (egilea)*>
+<!ELEMENT egilea (albuma)*>
+<!ATTLIST egilea izenaEgile ID #REQUIRED>
+<!ELEMENT albuma (portada?, abestia+)>
+<!ATTLIST albuma izenaAlbum ID #REQUIRED>
+<!ELEMENT portada ANY>
+<!ELEMENT abestia (izenburua, data, content)>
+<!ATTLIST abestia id ID #REQUIRED>
+<!ELEMENT izenburua (#PCDATA)>
+<!ELEMENT data (#PCDATA)>
+<!ELEMENT content ANY>
