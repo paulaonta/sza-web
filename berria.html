@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Musika entzun eta igo: musika igo.</title>
+		<title>Musikantzun: musika igo</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
-		<script type="text/javascript" src="bisita_liburua.js"></script>
+		<script type="text/javascript" src="musika_igo.js"></script>
 	</head>
 	<body>
 		<header>			
 			<strong>EGILEAK:</strong> Iñigo Gil, <br/> Mikel Laorden <br/> Paula Ontalvilla
 		</header>	
-
+		<aside>
+			Hauek dira egin ditzakezun ekintzak:
+			<ul>
+				<li><a href="index.html"> Orri nagusira bueltatu</a></li>
+				<li><a href="iruzkinak.php">Musika entzun</a></li>
+			</ul>
+		</aside>
 		<h1>Musikantzun</h1>	
 		<h2>Igo nahi duzun musika</h2>
 		<p>Abesti bat igotzeko bete hurrengo formularioa:</p>
 		<form action="berria.php" method="post">
-			Izenburua (*): <input type="text" name="izena"> <br/>
+			Izenburua (*): <input type="text" name="izenburu"> <br/>
 			Egilea(k) (*): <input type="text" name="egilea"> <br/>
 			Albuma: <input type="text" name="album"><br/>
 			Portada: <input type="file" name="portada"><br/>

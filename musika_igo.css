@@ -25,6 +25,45 @@ header {
 }
 
 
+aside {
+	width: 15%;
+	padding-top: 15px;
+	padding-bottom: 50%;
+	padding-left: 30px;
+	margin: 0;
+	float:right;
+	font-style: italic;
+	background-color: lightgray;
+	position: fixed; /* Make it stick, even on scroll */
+	right: 0.5%;
+	overflow: auto; /* Enable scrolling if the sidenav has too much content */  
+  }
+
+
+aside ul {
+  list-style-type: none;
+  margin-top: 15px;
+  padding: 0;
+  width:inherit;
+  background-color: #f1f1f1;
+  height: 100%; /* Full height */
+  position: fixed; /* Make it stick, even on scroll */
+  right: 0.5%;
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+  }
+  
+li a {
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+  
+  /* Change the link color on hover */
+li a:hover {
+	background-color: #EBD758; 
+	color: white;
+}
 
 
 
