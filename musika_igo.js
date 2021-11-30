@@ -3,9 +3,9 @@ function balidatu(f)
 	// Formularioko balioak irakurri
 	var izenburua = f.izenburua.value;
 	var egilea = f.egilea.value;
-	var albuma = f.albuma.value;
-	var portada = f.portada.value;
-	var abestia = f.abestia.value;
+	//Albuma balioa ez da irakurri behar ez delako beharrezkoa eta ez du inolako murriztapenik
+	var portadaPath = f.portada.value;
+	var abestiaPath = f.abestia.value;
 	
 	// Ziurtatu beteta egon behar diren eremuak beteta daudela.
 	var errorea = "";
@@ -14,9 +14,19 @@ function balidatu(f)
 	if(egilea=="")
 		errorea += "\tEgilea(k) eremua bete behar duzu.\n";
 	
-	//COMPROBAR QUE HA METIDO LA IMAGEN Y QUE ES UNA IMAGEN?
-	//CON EL AUDIO COMO HACEMOS???
-	
+	//Ziurtatu sartu diren file motatako fitxategiak formatu egokia izatea
+    var allowedExtensionsA = /(.jpg|.jpeg|.png)$/i;
+    if(portadaPath != '' && !allowedExtensionsA.exec(portadaPath)){
+        errorea += "\tMesedez sartu .jpg, .jpeg edo .png luzapeneko argazki bat.\n";
+    }
+
+	var allowedExtensionsB = /(.mp3|.ogg|.wva)$/i;
+	if (abestiaPath == '' ){
+		errorea += "\Abesti eremua bete behar duzu.\n";
+	}
+    else if( !allowedExtensionsB.exec(abestiaPath)){
+        errorea += "\tMesedez sartu .mp3, .ogg edo .wva luzapeneko abesti bat.\n";
+    }
 
 	// Errorerik badago, mezua erakutsi.
 	if(errorea != "")
@@ -24,8 +34,9 @@ function balidatu(f)
 		alert("Formularioa ez duzu ondo bete:\n" + errorea);
 		return false;
 	}
-	else
+	else{
 		return true;
+	}
 }
 
 

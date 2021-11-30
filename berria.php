@@ -1,15 +1,16 @@
 <?php
 	require_once("musikantzun.inc");	
 	// Jaso formularioko balioak eta testuei hasierako eta amaierako hutsuneak kendu (trim).
-	$izena=trim($_POST['izena']);
-	$eposta=trim($_POST['eposta']);
-	$pribatua=isset($_POST['pribatua']);
-	$iruzkina=trim($_POST['iruzkina']);
+	$izenburua=trim($_POST['izenburua']);
+	$egilea=trim($_POST['egilea']);
+	$albuma=isset($_POST['albuma']);
+	$portada=trim($_POST['portada']);
+	$abestia=trim($_POST['abestia']);
 
 	//Balidatu formularioko datuak.
-	$errorea = balidatu_berria($izena, $eposta, $iruzkina);
+	$errorea = balidatu_berria($izenburua, $egilea, $portada, $abestia);
 	if($errorea == '')
-		if(!gorde_iruzkina($izena, $eposta, $pribatua, $iruzkina))	// Gorde iruzkina datu basean (XML fitxategia).
+		if(!gorde_iruzkina($izenburua, $egilea, $albuma , $portada, $abestia))	// Gorde iruzkina datu basean (XML fitxategia).
 			$errorea = '<li>Ezin izan da iruzkina datu basean gorde.</li>';
 ?>
 <!DOCTYPE html>
