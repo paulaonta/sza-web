@@ -34,9 +34,7 @@
 		else
 		{
 			echo('<h1>Eskerrik asko zure iruzkina uzteagatik.</h1>');
-		}-
-		print_r($_FILES);
-		echo("$portada");
+		}
 	?>
 		<a href="index.html">Itzuli menu nagusira</a>.
 	</body>
