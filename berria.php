@@ -1,12 +1,12 @@
 <?php
 	require_once("musikantzun.inc");	
 	// Jaso formularioko balioak eta testuei hasierako eta amaierako hutsuneak kendu (trim).
-	$izenburua=trim($_POST['izenburua']);
-	$egilea=trim($_POST['egilea']);
-	$albuma=isset($_POST['albuma']);
-	$portada=trim($_POST['portada']);
-	$abestia=trim($_POST['abestia']);
-
+	$izenburua=($_POST['izenburua']);
+	$egilea=($_POST['egilea']);
+	$albuma=($_POST['albuma']);
+	$portada=($_FILES['portada']['name']); //izena luzapenarekin
+	$abestia=($_FILES['abestia']['name']); //izena luzapenarekin
+	
 	//Balidatu formularioko datuak.
 	$errorea = balidatu_berria($izenburua, $egilea, $portada, $abestia);
 	if($errorea == '')
@@ -34,7 +34,9 @@
 		else
 		{
 			echo('<h1>Eskerrik asko zure iruzkina uzteagatik.</h1>');
-		}
+		}-
+		print_r($_FILES);
+		echo("$portada");
 	?>
 		<a href="index.html">Itzuli menu nagusira</a>.
 	</body>

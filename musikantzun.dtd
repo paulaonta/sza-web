@@ -5,6 +5,6 @@
 <!ATTLIST albuma izenaAlbum ID #REQUIRED>
 <!ELEMENT portada ANY>
 <!ELEMENT abestia (izenburua, data)>
-<!ATTLIST abestia path ID #REQUIRED>
+<!ATTLIST abestia id ID #REQUIRED>
 <!ELEMENT izenburua (#PCDATA)>
-<!ELEMENT data (#PCDATA)>
+<!ELEMENT data (#PCDATA)>content

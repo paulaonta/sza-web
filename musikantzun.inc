@@ -2,21 +2,27 @@
 $BL_FILE='musikantzun.xml';		// Musika gordeko den fitxategia.
 
 function luzapen_egokia($fitxategia, $mota){
-	if ($mota == "abesti")
+	if ($mota == "abesti"){
 		$luzapen = $fitxategia->getExtension();
-		if ($luzapen == ".mp3" || $luzapen == ".ogg" || $luzapen == ".wva" )
+		if ($luzapen == ".mp3" || $luzapen == ".ogg" || $luzapen == ".wva" ){
 			return true;
-		else
+		}
+		else{
 			return False;
-	else if ($mota == "argazki")
+		}
+	}
+	else if ($mota == "argazki"){
 		$luzapen = $fitxategia->getExtension();
-		if ($luzapen == ".jpg" || $luzapen == ".jpeg" || $luzapen == ".png" )
+		if ($luzapen == ".jpg" || $luzapen == ".jpeg" || $luzapen == ".png" ){
 			return true;
-		else
+		}
+		else{
 			return False;
+		}
+	}
 	return False;
 }
-// Balioztatu abesti berri bat igottzeko formularioko datuak.
+// Balioztatu abesti berri bat igotzeko formularioko datuak.
 // Errorerik egonez gero errore mezu bat itzultzen du, bestela string hutsa.
 
 function balidatu_berria($izenburua, $egilea, $portada, $abestia)
@@ -26,11 +32,11 @@ function balidatu_berria($izenburua, $egilea, $portada, $abestia)
 		$mezua = $mezua.'<li>Izenburua eremua ez da bete.</li>';
 	if ($abestia == '') //abestia ez du sartu
 		$mezua = $mezua.'<li>Abestia eremua ez da bete.</li>';
-	if(!luzapen_egokia($abestia,mota:audioa))	// Abestia eremua bete da, baina bere luzapena ez da zuzena.
+	if(!luzapen_egokia($abestia,'audioa'))	// Abestia eremua bete da, baina bere luzapena ez da zuzena.
 		$mezua = $mezua.'<li>Abestiaren luzapena ez da zuzena.</li>';
 	if($egilea == '')	// egilea eremua ez da bete.
 		$mezua = $mezua.'<li>Egilea(k) eremua ez da bete.</li>';
-	if($portada != '' && !luzapen_egokia($portada,mota:argazki))	// Portada eremua bete da, baina bere luzapena ez da zuzena.
+	if($portada != '' && !luzapen_egokia($portada,'argazki'))	// Portada eremua bete da, baina bere luzapena ez da zuzena.
 		$mezua = $mezua.'<li>Portadaren argazkiaren luzapena ez da zuzena.</li>';
 	return $mezua;
 }
@@ -51,7 +57,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	$berria=$bl->addChild('egilea');	// Sortu 'egilea' etiketa.
 	$berria['izenaEgile']=$egilea;
 		
-	$alb = berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko etiketak.
+	$alb = $berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko etiketak.
 	
 	if ($albuma == ''){ //ez badu albumaren izena sartu
 		$alb['izenaAlbum']=$izenburua; //jarriko zaio abestiaren izenburua albumaren izen moduan
@@ -65,10 +71,10 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	}
 	
 	$abes = $alb->addChild('abestia');
-	$abes['path']=$abestia;
+	$abes['content']=$abestia;
 	
-	abes->addChild('izenburua', $izenburua) ;
-	abes->addChild('data', date('r')) ;
+	$abes->addChild('izenburua', $izenburua) ;
+	$abes->addChild('data', date('r')) ;
 
 	return $bl->asXML($BL_FILE);	// Gorde aldaketak fitxategian.
 }

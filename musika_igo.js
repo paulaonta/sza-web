@@ -22,7 +22,7 @@ function balidatu(f)
 
 	var allowedExtensionsB = /(.mp3|.ogg|.wva)$/i;
 	if (abestiaPath == '' ){
-		errorea += "\Abesti eremua bete behar duzu.\n";
+		errorea += "\tAbesti eremua bete behar duzu.\n";
 	}
     else if( !allowedExtensionsB.exec(abestiaPath)){
         errorea += "\tMesedez sartu .mp3, .ogg edo .wva luzapeneko abesti bat.\n";
