@@ -1,5 +1,5 @@
 <?php
-$BL_FILE='musikantzun.xml';		// Musika gordeko den fitxategia.
+$BL_FILE='./data/musikantzun.xml';		// Musika gordeko den fitxategia.
 
 function luzapen_egokia($fitxategia, $mota){
 	$luzapen =  explode('.', $fitxategia);
@@ -53,10 +53,9 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	if(!$bl)
 		return false;
 	
-	
 	$berria=$bl->addChild('egilea');	// Sortu 'egilea' etiketa.
 	$berria['izenaEgile']=$egilea;
-		
+	
 	$alb = $berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko etiketak.
 	
 	if ($albuma == ''){ //ez badu albumaren izena sartu
@@ -65,7 +64,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	else{ //Izena sartu du
 		$alb['izenaAlbum']=$albuma;
 	}
-	
+
 	if ($portada != ''){  //portada sartu badu
 		$alb->addChild('portada',$portada);
 	}
@@ -75,7 +74,9 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	
 	$abes->addChild('izenburua', $izenburua) ;
 	$abes->addChild('data', date('r')) ;
-
-	return $bl->asXML($BL_FILE);	// Gorde aldaketak fitxategian.
+	
+	$bl->asXML($BL_FILE);	// Gorde aldaketak fitxategian.
+	return True;
 }
+
 ?>
