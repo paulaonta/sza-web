@@ -25,6 +25,77 @@ header{
 	clear: both;
 	text-align: center;
 	font-weight:bold;
+	bottom: 100%;
+}
+
+form{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -5%);
+	width: 450px;
+	background: white;
+	border-radius: 10px;
+}
+
+form input::placeholder{
+	font-size: 15px;
+	padding-left: 5px;
+}
+
+.txt_field{
+	position: relative;
+	margin: 10px;
+	border-radius: 6px;
+	font-size: 30px;
+	border: 1px solid #232323 ;
+}
+
+#izenburua{
+	margin-top: 30px;
+}
+
+.txt_field input{
+	width: 100%;
+	padding: 0 5px;
+	height: 40px;
+	font-size: 16px;
+	border: none;
+	outline: none;
+}
+
+.txt_field label{
+	position: absolute;
+	top: 50%;
+}
+
+.fileHautatzaileak{
+	margin: 10px;
+}
+
+form label{
+	color: #7a7a7a;
+	font-size: 17px;
+}
+
+form input[type=submit]{
+	border-radius: 20px;
+	background-color: #1DB954;
+	color: white;
+	border: none;
+	margin: 20px;
+ 	font-size: 20px;
+	width: 100px;
+	height: 40px;
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+ul img{
+	vertical-align: text-bottom;
 }
 
 /*
