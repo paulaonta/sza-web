@@ -4,21 +4,29 @@
 		<title>Musikantzun: musika igo</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			  rel="stylesheet">
 		<script type="text/javascript" src="musika_igo.js"></script>
 	</head>
 	<body>
-		<header>			
-			<strong>EGILEAK:</strong> Iñigo Gil, <br/> Mikel Laorden <br/> Paula Ontalvilla
-		</header>	
-		<aside>
-			Hauek dira egin ditzakezun ekintzak:
-			<ul>
-				<li><a href="index.html"> Orri nagusira bueltatu</a></li>
-				<li><a href="iruzkinak.php">Musika entzun</a></li>
-			</ul>
-		</aside>
-		<h1>Musikantzun</h1>	
-		<h2>Igo nahi duzun musika</h2>
+		<header>
+			<div id="kredituak"><strong>EGILEAK:</strong> Iñigo Gil, <br/> Mikel Laorden <br/> Paula Ontalvilla</div>
+		</header>
+		<nav role = "navigation">
+			<div id = "menuToggle">
+				<input type = "checkbox"/>
+				<span></span>
+				<span></span>
+				<span></span>
+
+				<ul id = "menu">
+					<a href="#"><li><img class = "icon" src="/icons/home.svg">Hasiera</li></a>
+					<a href="#"><li><img class = "icon" src="/icons/listen.svg">Musika entzun</li></a>
+				</ul>
+			</div>
+		</nav>
+		<h1 id="title">Musikantzun</h1>
+		<h2 id="formIzenburua">Igo nahi duzun musika</h2>
 		<p>Abesti bat igotzeko bete hurrengo formularioa:</p>
 		<form action="berria.php" method="post" enctype='multipart/form-data'>
 			Izenburua (*): <input type="text" name="izenburua"> <br/>
