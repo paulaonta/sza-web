@@ -7,4 +7,4 @@
 <!ELEMENT abestia (izenburua, data)>
 <!ATTLIST abestia id ID #REQUIRED>
 <!ELEMENT izenburua (#PCDATA)>
-<!ELEMENT data (#PCDATA)>content
+<!ELEMENT data (#PCDATA)>

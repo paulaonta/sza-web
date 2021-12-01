@@ -9,9 +9,11 @@
 	
 	//Balidatu formularioko datuak.
 	$errorea = balidatu_berria($izenburua, $egilea, $portada, $abestia);
-	if($errorea == '')
-		if(!gorde_iruzkina($izenburua, $egilea, $albuma , $portada, $abestia))	// Gorde iruzkina datu basean (XML fitxategia).
-			$errorea = '<li>Ezin izan da iruzkina datu basean gorde.</li>';
+	if($errorea == ''){
+		if(!gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia))	// Gorde abestia datu basean (XML fitxategia).
+			$errorea = '<li>Ezin izan da abestia datu basean gorde.</li>';
+	}
+			
 ?>
 <!DOCTYPE html>
 <html>
