@@ -75,12 +75,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	$abes->addChild('izenburua', $izenburua) ;
 	$abes->addChild('data', date('r')) ;
 	
-	$domxml = new DOMDocument('1.0');
-	$domxml->preserveWhiteSpace = false;
-	$domxml->formatOutput = true;
-	/* @var $xml SimpleXMLElement */
-	$domxml->loadXML($xml->asXML($BL_FILE));
-	$domxml->save('../xml/Questions.xml');
+	$bl->asXML($BL_FILE);	// Gorde aldaketak fitxategian.
 	return True;
 }
 
