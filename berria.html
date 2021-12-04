@@ -7,11 +7,9 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			  rel="stylesheet">
 		<script type="text/javascript" src="musika_igo.js"></script>
+		<script type="text/javascript" src="animations.js"></script>
 	</head>
 	<body>
-		<header>
-			<div id="kredituak"><strong>EGILEAK:</strong> Iñigo Gil, <br/> Mikel Laorden <br/> Paula Ontalvilla</div>
-		</header>
 		<nav role = "navigation">
 			<div id = "menuToggle">
 				<input type = "checkbox"/>
@@ -20,8 +18,8 @@
 				<span></span>
 
 				<ul id = "menu">
-					<a href="#"><li><img class = "icon" src="/icons/home.png" height="25px">Hasiera</li></a>
-					<a href="#"><li><img class = "icon" src="/icons/listen.png" height="25">Musika entzun</li></a>
+					<a href="index.html"><li><img class = "icon" src="icons/home.png" height="25px">Hasiera</li></a>
+					<a href="#"><li><img class = "icon" src="icons/listen.png" height="25">Musika entzun</li></a>
 				</ul>
 			</div>
 		</nav>
@@ -36,5 +34,7 @@
 			<label for="abestia">Abestia (*): </label><input id="abestia" type="file" name="abestia" accept="audio/*" class="fileHautatzaileak"><br/>
 			<input type="submit" onclick="return balidatu(this.form);" value="Bidali">
 		</form>
+		<p id="egileak_berria" class="kredituak">Paula Ontalvilla, Mikel Laorden, Iñigo Gil</p>
+		<img class="infoIcon" src="icons/info.png" alt="info" onmouseenter='showKredituak("egileak_berria")' onmouseout="unshowKredituak('egileak_berria')">
 	</body>
 </html>
