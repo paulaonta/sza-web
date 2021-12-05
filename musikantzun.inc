@@ -45,14 +45,15 @@ function balidatu_berria($izenburua, $egilea, $portada, $abestia)
 function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 {
 	global $BL_FILE;	// Funtzio baten barrutik aldagai global erabiltzeko 'global' erabili behar da.
+	if(!file_exists($BL_FILE)){	// Abestiak gordetzeko XML fitxategia ez bada existitzen, sortu abestirik gabeko XML fitxategia.
+		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak></egileak>');
 	
-	if(!file_exists($BL_FILE))	// Abestiak gordetzeko XML fitxategia ez bada existitzen, sortu abestirik gabeko XML fitxategia.
-		$bl=new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak></egileak>');
-	else	// Bestela, kargatu XML fitxategia.
+	}else{	// Bestela, kargatu XML fitxategia.
 		$bl=simplexml_load_file($BL_FILE);
-	if(!$bl)
+	}
+	if($bl === false) // Boolean motakoa eta false bada, orduan:
 		return false;
-	
+		
 	$berria=$bl->addChild('egilea');	// Sortu 'egilea' etiketa.
 	$berria['izenaEgile']=$egilea;
 	
@@ -75,7 +76,11 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	$abes->addChild('izenburua', $izenburua) ;
 	$abes->addChild('data', date('r')) ;
 	
-	$bl->asXML($BL_FILE);	// Gorde aldaketak fitxategian.
+	$domxml = new DOMDocument('1.0');
+	$domxml->preserveWhiteSpace = false;
+	$domxml->formatOutput = true;	
+	$domxml->loadXML($bl->asXML());
+	$domxml->save($BL_FILE);	// Gorde aldaketak fitxategian.
 	return True;
 }
 
