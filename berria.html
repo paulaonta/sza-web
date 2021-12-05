@@ -4,27 +4,26 @@
 		<title>Musikantzun: musika igo</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			  rel="stylesheet">
 		<script type="text/javascript" src="musika_igo.js"></script>
 		<script type="text/javascript" src="animations.js"></script>
 	</head>
 	<body>
 		<nav role = "navigation">
-			<div id = "menuToggle">
+			<div class = "menuToggle">
 				<input type = "checkbox"/>
 				<span></span>
 				<span></span>
 				<span></span>
 
-				<ul id = "menu">
+				<ul class = "menu">
 					<a href="index.html"><li><img class = "icon" src="icons/home.png" height="25px">Hasiera</li></a>
+					<a href="#" id="actual"><li><img class = "icon" src="icons/upload.png" height="25px">Musika igo</li></a>
 					<a href="#"><li><img class = "icon" src="icons/listen.png" height="25">Musika entzun</li></a>
 				</ul>
 			</div>
 		</nav>
-		<h1 id="title">Musikantzun</h1>
-		<h2 id="formIzenburua">Igo nahi duzun musika</h2>
+		<h1 id="title" class="izenburua">Musikantzun</h1>
+		<h2 class="formIzenburua">Igo nahi duzun musika</h2>
 		<p>Abesti bat igotzeko bete hurrengo formularioa:</p>
 		<form action="berria.php" method="post" enctype='multipart/form-data'>
 			<input type="text" id="izenburua" name="izenburua" class="txt_field" placeholder="Izenburua (*)" required>
