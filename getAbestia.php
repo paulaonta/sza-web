@@ -69,4 +69,15 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
         }
         return null;         
     }
+
+    function bilatuAbestiaOnEgilea($egileElement, $abestiIzen){
+        foreach ($egileElement-> children() as $albumElement){
+            foreach ($albumElement-> abestia as $abestiElement){
+                if($abestiElement->izenburua == $abestiIzen){
+                    return $abestiElement;
+                }
+            }
+        }
+        return null;
+    }
 ?>
