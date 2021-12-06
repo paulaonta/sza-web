@@ -52,7 +52,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	global $PORTADA;
 
 	if(!file_exists($BL_FILE)){	// Abestiak gordetzeko XML fitxategia ez bada existitzen, sortu abestirik gabeko XML fitxategia.
-		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak azkenIdPortada="0" azkenIdAbestia = "0"></egileak>');
+		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "dtd/musikantzun.dtd"><egileak azkenIdPortada="0" azkenIdAbestia = "0"></egileak>');
 	
 	}else{	// Bestela, kargatu XML fitxategia.
 		$bl=simplexml_load_file($BL_FILE);

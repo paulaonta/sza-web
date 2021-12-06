@@ -1,0 +1,7 @@
+<!ELEMENT abestia(izenburua, egilea, albuma, path+)>
+<!ELEMENT izenburua (#PCDATA)>
+<!ATTLIST egilea izenaEgile ID #REQUIRED>
+<!ELEMENT albuma (portada)>
+<!ELEMENT portada (#PCDATA)>
+<!ATTLIST albuma izenaAlbuma NMTOKEN #REQUIRED>
+<!ELEMENT path (#PCDATA)>
