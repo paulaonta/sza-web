@@ -5,6 +5,11 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
 		<script type="text/javascript" src="animations.js"></script>
+		<style>
+			#index_menu{
+				color: white;
+			}
+		</style>
 	</head>
 	<body>
 		<?php require 'html/nav.html'?>

@@ -6,6 +6,11 @@
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
 		<script type="text/javascript" src="musika_igo.js"></script>
 		<script type="text/javascript" src="animations.js"></script>
+		<style>
+			#addAbesti_menu{
+				color: white;
+			}
+		</style>
 	</head>
 	<body>
 		<?php require 'html/nav.html'?>
