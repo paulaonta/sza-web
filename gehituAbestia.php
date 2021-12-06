@@ -31,20 +31,7 @@
 	</head>
 	<body>
 	<body>
-		<nav role = "navigation">
-			<div class = "menuToggle">
-				<input type = "checkbox"/>
-				<span></span>
-				<span></span>
-				<span></span>
-
-				<ul class = "menu">
-					<a href="index.html"><li><img class = "icon" src="icons/home.png" height="25px">Hasiera</li></a>
-					<a href="berria.html"><li><img class = "icon" src="icons/upload.png" height="25px">Musika igo</li></a>
-					<a href="#"><li><img class = "icon" src="icons/listen.png" height="25">Musika entzun</li></a>
-				</ul>
-			</div>
-		</nav>
+		<?php require 'html/nav.html'?>
 		<h1 class="izenburua">Musikantzun</h1>
 			<?php
 			if($errorea != '')
@@ -52,13 +39,13 @@
 				echo('<img src="icons/txarto.png" alt="error">');
 				echo('<h1>Errore bat gertatu da abestia igotzean.</h1>');
 				echo("<ul>$errorea</ul>");
-				echo('<a href="berria.html" class = "berriaAtzera">Atzera joan</a>');
+				echo('<a href="formAbestiaGehitu.php" class = "berriaAtzera">Atzera joan</a>');
 			}
 			else
 			{
 				echo('<img src="icons/ongi.png" alt="ondo">');
 				echo('<h1>Eskerrik asko abestia igotzeagatik.</h1>');
-				echo('<a href="berria.html" class = "berriaAtzera">Atzera joan</a>');
+				echo('<a href="formAbestiaGehitu.php" class = "berriaAtzera">Atzera joan</a>');
 			}
 			?>
 		<p id="egileak_index" class="kredituak">Paula Ontalvilla, Mikel Laorden, Iñigo Gil</p>

@@ -66,7 +66,7 @@ $table.find('thead tr').children().each(function(i, v) {
     $(v).width(colWidth[i]);
 });</script>
 <footer id='playfooter' style='border-top-style:solid;'>
-    <?php include 'erreproduktore.html';?>
+    <?php include 'html/erreproduktore.html';?>
 </footer>
 </body>
 
