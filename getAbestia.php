@@ -20,26 +20,21 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
 
         
 
-        $returnXML = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><abestia></abestia>');
+        $returnXML = new SimpleXMLElement(
+            '<?xml version="1.0" encoding="UTF-8"?>
+            <!DOCTYPE abestia SYSTEM "dtd/abestiDeskribapena.dtd">
+            <abestia></abestia>');
         $returnXML->addChild('izenburua', $abestia->izenburua);
         $returnXML->addChild('egilea')->addAttribute('izenaEgile', $egilea['izenaEgile']);
         $albumXmlElement = $returnXML->addChild('albuma');
         $albumXmlElement->addAttribute('izenaAlbum', $albuma['izenaAlbum']);
-        if(isset($albuma->portada)){
-            $albumXmlElement->addChild('portada', $config['album_path'].$albuma->portada);
+        if(isset($albuma->portada) && isset($albuma->portada->path)){
+            $albumXmlElement->addChild('portada', $config['album_path'].$albuma->portada->path[0]);
         }
         $returnXML->addChild('path',$config['audio_path'].$abestia->path);
    
 
         print_r($returnXML->asXML());
-
-        "
-        <!ELEMENT abestia(izenburua, egilea, albuma, path+)>
-        <!ELEMENT izenburua (#PCDATA)>
-        <!ATTLIST egilea izenaEgile ID #REQUIRED>
-        <!ELEMENT albuma (portada)>
-        <!ATTLIST albuma izenaAlbuma NMTOKEN #REQUIRED>
-        <!ELEMENT path (#PCDATA)>";
 
     }
 }

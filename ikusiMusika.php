@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="abesti_lista.css" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='abestiak_ikusi.js'></script>
+    <style>
+        #showAbestiak_menu{
+            color: white;
+        }
+    </style>
 
 </head>
 <body>
+    <?php require 'html/nav.html' ?>
 <div class="content">
     <h1>Abestien lista:</h1>
 <table id='abestiTaula'class="center">
@@ -66,7 +72,7 @@ $table.find('thead tr').children().each(function(i, v) {
     $(v).width(colWidth[i]);
 });</script>
 <footer id='playfooter' style='border-top-style:solid;'>
-    <?php include 'erreproduktore.html';?>
+    <?php include 'html/erreproduktore.html';?>
 </footer>
 </body>
 

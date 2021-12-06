@@ -6,26 +6,18 @@
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
 		<script type="text/javascript" src="musika_igo.js"></script>
 		<script type="text/javascript" src="animations.js"></script>
+		<style>
+			#addAbesti_menu{
+				color: white;
+			}
+		</style>
 	</head>
 	<body>
-		<nav role = "navigation">
-			<div class = "menuToggle">
-				<input type = "checkbox"/>
-				<span></span>
-				<span></span>
-				<span></span>
-
-				<ul class = "menu">
-					<a href="index.html"><li><img class = "icon" src="icons/home.png" height="25px">Hasiera</li></a>
-					<a href="#" id="actual"><li><img class = "icon" src="icons/upload.png" height="25px">Musika igo</li></a>
-					<a href="ikusiMusika.php"><li><img class = "icon" src="icons/listen.png" height="25">Musika entzun</li></a>
-				</ul>
-			</div>
-		</nav>
+		<?php require 'html/nav.html'?>
 		<h1 id="title" class="izenburua">Musikantzun</h1>
 		<h2 class="formIzenburua">Igo nahi duzun musika</h2>
 		<p>Abesti bat igotzeko bete hurrengo formularioa:</p><br/>
-		<form action="berria.php" method="post" enctype='multipart/form-data'>
+		<form action="gehituAbestia.php" method="post" enctype='multipart/form-data'>
 			<input type="text" id="izenburua" name="izenburua" class="txt_field" placeholder="Izenburua (*)" required>
 			<input type="text" name="egilea" class="txt_field" placeholder="Egilea(k) (*)" required> <br/>
 			<input type="text" name="albuma" class="txt_field" placeholder="Albuma"><br/><br/>
