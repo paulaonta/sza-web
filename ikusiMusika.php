@@ -41,8 +41,9 @@
                         $izenburua = $abestia->izenburua;
                         $abestiContent = $abestia->path;
                         $abestiPath = './data/musika/'.$abestiContent;
+                        $abestiID = $abestia['abestiaId'];
                         echo "<tr>
-                        <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$egileIzen','$albumIzen','$izenburua')\"/></td>
+                        <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$abestiID')\"/></td>
                         <td>$egileIzen</td>
                         <td>$albumIzen</td>
                         <td>$izenburua</td>

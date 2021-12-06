@@ -8,14 +8,11 @@ $(document).ready(function(){
     $('.abestiInfo').css('visibility','hidden');
 });
 
-function entzunAbestia(egile, album, abesti){
+function entzunAbestia(id){
     $.ajax({
         url: 'getAbestia.php',
         type: 'GET',
-        data: { 'egilea':egile,
-                'albuma': album,
-                'abestia': abesti
-            },
+        data: { 'id':id},
         success: function(data){
             var $err = $(document).find('#erreproduktorea');
             $err.find('source').remove(); //Borratu aurreko abestien path-ak
