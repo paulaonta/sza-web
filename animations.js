@@ -21,3 +21,18 @@ async function unshowKredituak(pID){
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+function enterAzalaAlerta(){
+    var azalaF = document.getElementById("azala");
+    var azala = document.getElementById("azalaAlerta");
+    azala.style.cssText = "color:red; display:inline; font-size: 20px; "
+    azala.style.fontFamily =" Times, serif, cursive, fantasy";
+    azalaF.style.marginBottom = "7%";
+}
+
+function outAzalaAlerta(){
+    var azalaF = document.getElementById("azala");
+    var azala = document.getElementById("azalaAlerta");
+    azala.style.cssText = " display:none; "
+    azalaF.style.marginBottom = "0%";
+}
