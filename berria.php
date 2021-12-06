@@ -18,26 +18,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<?php
-		if($errorea=='')
-			echo '<title>Eskerrik asko zure iruzkina uzteagatik</title>';
-		else
-			echo '<title>Errorea iruzkin berria jasotzean</title>';
-	?>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="musika_igo.css" type="text/css">
+		<script type="text/javascript" src="animations.js"></script>
+		<?php
+			if($errorea=='')
+				echo '<title>Zure abestia inolako arazorik gabe igo da.</title>';
+			else
+				echo '<title>Errorea abesti berria gehitzerakoan</title>';
+		?>
 		<meta charset="UTF-8">
 	</head>
 	<body>
-	<?php
-		if($errorea != '')
-		{
-			echo('<h1>Errore bat gertatu da iruzkina gordetzean.</h1>');
-			echo("<ul>$errorea</ul>");
-		}
-		else
-		{
-			echo('<h1>Eskerrik asko zure iruzkina uzteagatik.</h1>');
-		}
-	?>
-		<a href="index.html">Itzuli menu nagusira</a>.
+	<body>
+		<nav role = "navigation">
+			<div class = "menuToggle">
+				<input type = "checkbox"/>
+				<span></span>
+				<span></span>
+				<span></span>
+
+				<ul class = "menu">
+					<a href="index.html"><li><img class = "icon" src="icons/home.png" height="25px">Hasiera</li></a>
+					<a href="berria.html"><li><img class = "icon" src="icons/upload.png" height="25px">Musika igo</li></a>
+					<a href="#"><li><img class = "icon" src="icons/listen.png" height="25">Musika entzun</li></a>
+				</ul>
+			</div>
+		</nav>
+		<h1 class="izenburua">Musikantzun</h1>
+			<?php
+			if($errorea != '')
+			{
+				echo('<img src="icons/txarto.png" alt="error">');
+				echo('<h1>Errore bat gertatu da abestia igotzean.</h1>');
+				echo("<ul>$errorea</ul>");
+				echo('<a href="berria.html" class = "berriaAtzera">Atzera joan</a>');
+			}
+			else
+			{
+				echo('<img src="icons/ongi.png" alt="ondo">');
+				echo('<h1>Eskerrik asko abestia igotzeagatik.</h1>');
+				echo('<a href="berria.html" class = "berriaAtzera">Atzera joan</a>');
+			}
+			?>
+		<p id="egileak_index" class="kredituak">Paula Ontalvilla, Mikel Laorden, Iñigo Gil</p>
+		<img class="infoIcon" src="icons/info.png" alt="info" onmouseenter='showKredituak("egileak_index")' onmouseout="unshowKredituak('egileak_index')">
 	</body>
 </html>

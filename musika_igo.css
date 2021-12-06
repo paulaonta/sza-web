@@ -5,7 +5,8 @@
 	font-size: 150px;
 	color: #FFF;
 	text-shadow: 1px 1px 0px #515151;
-	margin-top: 0px;
+	margin-top: 0%;
+	margin-bottom: 3%;
 }
 
 #kredituak{
@@ -25,17 +26,17 @@ header{
 	clear: both;
 	text-align: center;
 	font-weight:bold;
-	margin-top: -50px;
+	margin-top: 0%;
 }
 
 form{
-	position: absolute;
+	position: relative;
 	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -5%);
-	width: 450px;
+	width: 40%;
 	background: white;
-	border-radius: 10px;
+	border-radius: 7%;
 }
 
 form input::placeholder{
@@ -65,7 +66,7 @@ form input::placeholder{
 }
 
 .txt_field label{
-	position: absolute;
+	position: relative;
 	top: 50%;
 }
 
@@ -74,7 +75,7 @@ form input::placeholder{
 }
 
 form label{
-	color: #7a7a7a;
+	color: black;
 	font-size: 17px;
 }
 
@@ -144,6 +145,7 @@ body
 	text-align: left;
 	transition: color 0.3s ease;
 }
+
 
 .menuToggle a:hover
 {
@@ -287,7 +289,7 @@ form{
 .infoIcon{
 	position: fixed;
 	bottom: 1.5%;
-	right: 1%
+	right: 1%;
 }
 
 .kredituak{
@@ -295,5 +297,29 @@ form{
 	font-family: 'Montserrat', sans-serif;
 	position: fixed;
 	bottom: 1.5%;
-	right: -20%
+	right: -20%;
 }
+
+.berriaAtzera {
+	outline: none;
+	font-size: 2em;
+	width: 30%;
+	margin-right: 0.625%;
+	text-align: center;
+	line-height: 5;
+	color: white;
+	border-radius: 5%;
+  }
+
+  
+  .berriaAtzera:link, #berriaAtzera:visited, #berriaAtzera:focus {
+	background: #1DB954;
+  }
+  
+  .berriaAtzera:hover {
+	background: #107232;
+  }
+  
+  .berriaAtzera:active {
+	background: white;
+  }
