@@ -1,10 +1,6 @@
 <?php
 $config = require ("./config.php");
-if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
-
-    $egilea = $_GET['egilea'];
-    $albuma = $_GET['albuma'];
-    $abestia = $_GET['abestia'];
+if(isset($_GET['id']) || isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
 
     if(!file_exists('./data/musikantzun.xml')){
         echo 'Ezinezkoa da abestiaren informazioa lortzea';
@@ -12,13 +8,21 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
     }
     $xmlData = simplexml_load_file('./data/musikantzun.xml');
     //echo '<pre>';print_r();echo '</pre>';
-    $abestiData = getAbestia($xmlData, $egilea, $albuma, $abestia);
+    $abestiData = null;
+    if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
+        $egilea = $_GET['egilea'];
+        $albuma = $_GET['albuma'];
+        $abestia = $_GET['abestia'];
+        $abestiData = getAbestia($xmlData, $egilea, $albuma, $abestia);
+    }else if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $abestiData = getAbestiaId($xmlData, $id);
+    }
+
     if($abestiData != null){
         $egilea = $abestiData['egilea'];
         $albuma = $abestiData['albuma'];
         $abestia = $abestiData['abestia'];
-
-        
 
         $returnXML = new SimpleXMLElement(
             '<?xml version="1.0" encoding="UTF-8"?>
@@ -33,14 +37,35 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
         }
         $returnXML->addChild('path',$config['audio_path'].$abestia->path);
    
-
         print_r($returnXML->asXML());
-
+        
+    }else{
+        echo "error";
     }
 }
+
 ?>
 
 <?php
+
+    function getAbestiaId($datuakXml, $id){
+        foreach($datuakXml->children() as $egileElement){
+            foreach ($egileElement-> children() as $albumElement){
+                foreach ($albumElement-> abestia as $abestiElement){
+                    if($abestiElement['abestiaId'] == $id){
+                        $abestiData = array(
+                            'egilea' => $egileElement,
+                            'albuma' => $albumElement,
+                            'abestia' => $abestiElement
+                        );
+                        return $abestiData;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     function getAbestia($datuakXml, $egile, $album, $abesti){
         $abestiaLortua = false;        
         $egileElement = bilatuEgilea($datuakXml, $egile);
