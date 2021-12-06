@@ -17,20 +17,7 @@ footer{
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function entzunAbestia(abestiPath){
-
-            var errep = document.getElementById('erreproduktorea');
-            $(errep).find('source').remove();
-            var src = document.createElement('source');
-            src.setAttribute('src', abestiPath);
-            $(errep).prepend(src);
-
-            errep.load();
-            errep.play();
-        }
-
-    </script>
+    <script src='abestiak_ikusi.js'></script>
 
 </head>
 <body>
@@ -55,14 +42,14 @@ footer{
 
                         $abestia = $albumElementu;
                         $izenburua = $abestia->izenburua;
-                        $abestiContent = $abestia['content'];
+                        $abestiContent = $abestia->path;
                         $abestiPath = './data/musika/'.$abestiContent;
                         echo "<tr>
 
                         <td>$egileIzen</td>
                         <td>$albumIzen</td>
                         <td>$izenburua</td>
-                        <td><input type='button' value='Entzun' onClick='entzunAbestia(\"$abestiPath\")'></button></td>                     
+                        <td><input type='button' value='Entzun' onClick=\"entzunAbestia('$egileIzen','$albumIzen','$izenburua')\"></button></td>                     
                         </tr>";       
                     }
                 }
@@ -78,22 +65,23 @@ footer{
     <table style='border-top-style:solid; width: 100%;'>
     <tbody>
         <tr>
-            <td id="albumArgazkiTd">
+            <td id="albumArgazkiTd" class='abestiInfo'>
                 <img id='albumArgazki' src='./data/album_portadak/violin.jpeg' height=100 width=100/></td>
-            <td id="abestiInfo">
-                <div id="abestiIzen">
-                   <strong>Izena abestiarena</strong>
-                </div>
-                <div id="abestiEgile">
-                    Mikel
-                </div>
+            <td id="abestiInfo" class='abestiInfo'>
+                <a id="abestiIzen">
+                   
+                </a><br>
+                <a id="egileIzen">
+                    
+                </a>
                 </td>
-            
             <td>
                 <audio id='erreproduktorea' controls autoplay>
-                <source src="" type="audio/mp3">
                 Your browser does not support the audio element.
-                </audio></td>
+                </audio><br>
+                <p id='playerStatus' visibility='none'></p>
+            
+            </td>
         </tr>
     </tbody>
     </table>

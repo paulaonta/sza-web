@@ -1,5 +1,5 @@
 <?php
-
+$config = require ("./config.php");
 if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
 
     $egilea = $_GET['egilea'];
@@ -11,10 +11,38 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
         die();
     }
     $xmlData = simplexml_load_file('./data/musikantzun.xml');
-    
-    echo '<pre>';print_r(getAbestia($xmlData, $egilea, $albuma, $abestia));echo '</pre>';
-}
+    //echo '<pre>';print_r();echo '</pre>';
+    $abestiData = getAbestia($xmlData, $egilea, $albuma, $abestia);
+    if($abestiData != null){
+        $egilea = $abestiData['egilea'];
+        $albuma = $abestiData['albuma'];
+        $abestia = $abestiData['abestia'];
 
+        
+
+        $returnXML = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><abestia></abestia>');
+        $returnXML->addChild('izenburua', $abestia->izenburua);
+        $returnXML->addChild('egilea')->addAttribute('izenaEgile', $egilea['izenaEgile']);
+        $albumXmlElement = $returnXML->addChild('albuma');
+        $albumXmlElement->addAttribute('izenaAlbum', $albuma['izenaAlbum']);
+        if(isset($albuma->portada)){
+            $albumXmlElement->addChild('portada', $config['album_path'].$albuma->portada);
+        }
+        $returnXML->addChild('path',$config['audio_path'].$abestia->path);
+   
+
+        print_r($returnXML->asXML());
+
+        "
+        <!ELEMENT abestia(izenburua, egilea, albuma, path+)>
+        <!ELEMENT izenburua (#PCDATA)>
+        <!ATTLIST egilea izenaEgile ID #REQUIRED>
+        <!ELEMENT albuma (portada)>
+        <!ATTLIST albuma izenaAlbuma NMTOKEN #REQUIRED>
+        <!ELEMENT path (#PCDATA)>";
+
+    }
+}
 ?>
 
 <?php
@@ -35,7 +63,7 @@ if(isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
             $abestiData = array(
                 'egilea' => $egileElement,
                 'albuma' => $albumElement,
-                'abesti' => $abestiElement
+                'abestia' => $abestiElement
             );
             return $abestiData;
         }else{
