@@ -1,5 +1,8 @@
 <?php
 $BL_FILE='./data/musikantzun.xml';		// Musika gordeko den fitxategia.
+$PORTADA = './data/album_portadak';     //Portadak gordeko den karpeta
+$ABESTIA = './data/musika';     //Abestiak gordeko den karpeta
+require_once("getAbestia.php");
 
 function luzapen_egokia($fitxategia, $mota){
 	$luzapen =  explode('.', $fitxategia);
@@ -45,37 +48,97 @@ function balidatu_berria($izenburua, $egilea, $portada, $abestia)
 function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 {
 	global $BL_FILE;	// Funtzio baten barrutik aldagai global erabiltzeko 'global' erabili behar da.
+	global $ABESTIA;
+	global $PORTADA;
+
 	if(!file_exists($BL_FILE)){	// Abestiak gordetzeko XML fitxategia ez bada existitzen, sortu abestirik gabeko XML fitxategia.
-		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak></egileak>');
+		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak azkenIdPortada="0" azkenIdAbestia = "0"></egileak>');
 	
 	}else{	// Bestela, kargatu XML fitxategia.
 		$bl=simplexml_load_file($BL_FILE);
 	}
 	if($bl === false) // Boolean motakoa eta false bada, orduan:
 		return false;
-		
-	$berria=$bl->addChild('egilea');	// Sortu 'egilea' etiketa.
-	$berria['izenaEgile']=$egilea;
 	
-	$alb = $berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko etiketak.
-	
-	if ($albuma == ''){ //ez badu albumaren izena sartu
-		$alb['izenaAlbum']=$izenburua; //jarriko zaio abestiaren izenburua albumaren izen moduan
+	$lagEgilea = bilatuEgilea($bl,$egilea);
+	if ($lagEgilea==null){ //egilea ez badago sartuta
+		$berria=$bl->addChild('egilea');	// Sortu 'egilea' etiketa.
+		$berria['izenaEgile']=$egilea;
 	}
-	else{ //Izena sartu du
-		$alb['izenaAlbum']=$albuma;
+	else{ //egilea sartuta dago
+		$berria = $lagEgilea;
 	}
 
-	if ($portada != ''){  //portada sartu badu
-		$alb->addChild('portada',$portada);
+	$sartuta = FALSE; //aldagai honek esaten digu albuma sartuta dagoenetz
+	if ($albuma == ''){//album baten izena sartu badu
+		$lagAlbum = bilatuAlbumaOnEgilea($berria,$albuma);
+	}
+	else{
+		$lagAlbum = bilatuAlbumaOnEgilea($berria,$izenburua.'(SINGLE)');
+	}
+	if($lagAlbum == null){  //albuma ez badago sartuta
+		$alb = $berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko album etiketa
+		if ($albuma == ''){ //ez badu albumaren izena sartu
+			$alb['izenaAlbum']=$izenburua.'(SINGLE)'; //jarriko zaio abestiaren izenburua albumaren izen moduan eta gehituko diogu SINGLE zehazteko ez dela album baten parte
+		}
+		else{ //Izena sartu du
+			$alb['izenaAlbum']=$albuma;
+		}
+	}
+	else{ //albuma sartuta dago
+		$alb = $lagAlbum;
+		$sartuta = TRUE;
+	}	
+	
+
+	if ($portada != '' && !$sartuta){  //portada sartu badu eta albuma lehen aldiz sartu badu
+		$idPortada = $bl['azkenIdPortada']+1;
+		$port = $alb->addChild('portada');
+		$port['portadaId'] = $idPortada;
+		$port->addChild('path',"$idPortada"."_"."$portada");
+
+		//gordeko dugu fitxategi batean
+
+		//konprobatuko dugu ea direktoria existitzen den
+		if(!file_exists($PORTADA)){ //ez bada existitzen
+			mkdir($PORTADA, 0700);//sortuko dugu
+		}
+		
+		$image_path = "$PORTADA/$port->path";
+		$imgDataBytes = file_get_contents($_FILES['portada']['tmp_name']); // Irakurri
+		file_put_contents($image_path,$imgDataBytes); //gorde gure karpetan
 	}
 	
-	$abes = $alb->addChild('abestia');
-	$abes['content']=$abestia;
+
+	$lagAbesti = bilatuAbestiaOnEgilea($berria,$izenburua); 
+	if($lagAbesti == null){ //egileak abesti hori ez badauka
+		$idAbesti = $bl['azkenIdAbestia']+1;
+		$abes = $alb->addChild('abestia');
+		$abes['abestiaId']=$idAbesti;
+		
+		$abes->addChild('izenburua', $izenburua) ;
+		$abes->addChild('data', date('r')) ;
+		$abes->addChild('path',"$idAbesti"."_"."$abestia");
+		
+		//gordeko dugu fitxategi batean
+
+		//konprobatuko dugu ea direktoria existitzen den
+		if(!file_exists($ABESTIA)){ //ez bada existitzen
+			mkdir($ABESTIA, 0700);//sortuko dugu
+		}
+
+		$image_path = "$ABESTIA/$abes->path";
+		$imgDataBytes = file_get_contents($_FILES['abestia']['tmp_name']); // Irakurri
+		file_put_contents($image_path,$imgDataBytes); //gorde gure karpetan
+	}
+	else{
+		return False;
+	}	
 	
-	$abes->addChild('izenburua', $izenburua) ;
-	$abes->addChild('data', date('r')) ;
-	
+	if($portada != '') //portada sartu badu
+		$bl['azkenIdPortada'] = $idPortada;
+	$bl['azkenIdAbestia'] = $idAbesti;
+
 	$domxml = new DOMDocument('1.0');
 	$domxml->preserveWhiteSpace = false;
 	$domxml->formatOutput = true;	

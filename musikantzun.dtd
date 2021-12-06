@@ -1,4 +1,6 @@
 <!ELEMENT egileak (egilea)>
+    <!ATTLIST egileak azkenIdPortada ID #REQUIRED>
+    <!ATTLIST egileak azkenIdAbestia ID #REQUIRED>
     <!ELEMENT egilea (albuma)>
     <!ATTLIST egilea izenaEgile ID #REQUIRED>
         <!ELEMENT albuma (portada?, abestia+)>
