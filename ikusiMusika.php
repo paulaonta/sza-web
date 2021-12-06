@@ -2,28 +2,19 @@
 <head>
     <title>Musikantzun: musika entzun.</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="musika_igo.css" type="text/css">   
-    <style>
-body {
-    margin: 0; /* If not already reset */
-}
-
-footer{
-  position: fixed;
-  bottom: 0;
-  padding-bottom:30px;
-  width: 100%;
-}
-
-    </style>
+    <link rel="stylesheet" href="musika_igo.css" type="text/css"/>   
+    <link rel="stylesheet" href="reproduktore.css" type="text/css"/>
+    <link rel="stylesheet" href="abesti_lista.css" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='abestiak_ikusi.js'></script>
 
 </head>
 <body>
 <div class="content">
-<table id='abestiTaula'>
+    <h1>Abestien lista:</h1>
+<table id='abestiTaula'class="center">
     <thead><tr>
+        <td>    </td>
         <td>Egilea</td>
         <td>Albuma</td>
         <td>Abestia</td></tr>
@@ -45,11 +36,11 @@ footer{
                         $abestiContent = $abestia->path;
                         $abestiPath = './data/musika/'.$abestiContent;
                         echo "<tr>
-
+                        <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$egileIzen','$albumIzen','$izenburua')\"/></td>
                         <td>$egileIzen</td>
                         <td>$albumIzen</td>
                         <td>$izenburua</td>
-                        <td><input type='button' value='Entzun' onClick=\"entzunAbestia('$egileIzen','$albumIzen','$izenburua')\"></button></td>                     
+                                             
                         </tr>";       
                     }
                 }
@@ -60,32 +51,22 @@ footer{
 </tbody>
 </table> 
 </div>
-<footer style='border-top-style:solid;'>
-<div id='playBar'>
-    <table style='border-top-style:solid; width: 100%;'>
-    <tbody>
-        <tr>
-            <td id="albumArgazkiTd" class='abestiInfo'>
-                <img id='albumArgazki' src='./data/album_portadak/violin.jpeg' height=100 width=100/></td>
-            <td id="abestiInfo" class='abestiInfo'>
-                <a id="abestiIzen">
-                   
-                </a><br>
-                <a id="egileIzen">
-                    
-                </a>
-                </td>
-            <td>
-                <audio id='erreproduktorea' controls autoplay>
-                Your browser does not support the audio element.
-                </audio><br>
-                <p id='playerStatus' visibility='none'></p>
-            
-            </td>
-        </tr>
-    </tbody>
-    </table>
-</div>
+<script>// Change the selector if needed
+var $table = $('#abestiTaula'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+// Get the tbody columns width array
+colWidth = $bodyCells.map(function() {
+    return $(this).width();
+}).get();
+
+// Set the width of thead columns
+$table.find('thead tr').children().each(function(i, v) {
+    $(v).width(colWidth[i]);
+});</script>
+<footer id='playfooter' style='border-top-style:solid;'>
+    <?php include 'erreproduktore.html';?>
 </footer>
 </body>
 

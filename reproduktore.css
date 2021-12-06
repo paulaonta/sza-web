@@ -1,0 +1,45 @@
+body {
+    margin: 0; /* If not already reset */
+}
+
+div#content{
+    text-align:left;
+}
+ #playFooter{
+  position: fixed;
+  bottom: 0;
+  height:10vh;
+  max-height: 100px;
+  width: 100%;
+  padding: 1vh;
+}
+td#albumArgazkiTd{
+    width: 1%;
+    white-space: nowrap;
+}
+img#albumArgazki{
+    background-color: white;
+    border-radius: 10%;
+    max-height:100;
+    max-width:100;
+    height: 10vh;
+    width: 10vh;
+}
+a#abestiIzen{
+    font-weight: bolder;
+}
+a#egileIzen{
+    font-style: italic;
+}
+#abestiData a:hover{
+    text-decoration: underline;
+  }
+div#abestiData {
+    width:auto;
+    padding: 1%;
+    text-align: left;
+}
+#erreproduktoreTd{
+    width:70%;
+    text-align: center;
+}
