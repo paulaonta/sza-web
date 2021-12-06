@@ -52,7 +52,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	global $PORTADA;
 
 	if(!file_exists($BL_FILE)){	// Abestiak gordetzeko XML fitxategia ez bada existitzen, sortu abestirik gabeko XML fitxategia.
-		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak azkenIdPortada="0" azkenIdAbestia = "0"></egileak>');
+		$bl=simplexml_load_string('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE egileak SYSTEM "musikantzun.dtd"><egileak azkenIdAlbuma="0" azkenIdAbestia = "0"></egileak>');
 	
 	}else{	// Bestela, kargatu XML fitxategia.
 		$bl=simplexml_load_file($BL_FILE);
@@ -70,7 +70,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	}
 
 	$sartuta = FALSE; //aldagai honek esaten digu albuma sartuta dagoenetz
-	if ($albuma == ''){//album baten izena sartu badu
+	if ($albuma != ''){//album baten izena sartu badu
 		$lagAlbum = bilatuAlbumaOnEgilea($berria,$albuma);
 	}
 	else{
@@ -78,6 +78,8 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	}
 	if($lagAlbum == null){  //albuma ez badago sartuta
 		$alb = $berria->addChild('albuma'); 	// Sortu 'egilea' etiketa barruko album etiketa
+		$idAlbum = $bl['azkenIdAlbuma']+1;
+		$alb['albumaId'] = $idAlbum;
 		if ($albuma == ''){ //ez badu albumaren izena sartu
 			$alb['izenaAlbum']=$izenburua.'(SINGLE)'; //jarriko zaio abestiaren izenburua albumaren izen moduan eta gehituko diogu SINGLE zehazteko ez dela album baten parte
 		}
@@ -91,11 +93,10 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 	}	
 	
 
-	if ($portada != '' && !$sartuta){  //portada sartu badu eta albuma lehen aldiz sartu badu
-		$idPortada = $bl['azkenIdPortada']+1;
+	if (($portada != '' && !$sartuta) || ($sartuta && $portada != '' && $alb->portada == '')){  //portada sartu badu eta albuma lehen aldiz sartu badu EDO
+																			 //portada sartu badu, ez du albuma lehen aldiz sartu eta albuma ez dauka portadarik
 		$port = $alb->addChild('portada');
-		$port['portadaId'] = $idPortada;
-		$port->addChild('path',"$idPortada"."_"."$portada");
+		$port->addChild('path',$alb['albumaId']."_".$portada);
 
 		//gordeko dugu fitxategi batean
 
@@ -108,7 +109,7 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 		$imgDataBytes = file_get_contents($_FILES['portada']['tmp_name']); // Irakurri
 		file_put_contents($image_path,$imgDataBytes); //gorde gure karpetan
 	}
-	
+
 
 	$lagAbesti = bilatuAbestiaOnEgilea($berria,$izenburua); 
 	if($lagAbesti == null){ //egileak abesti hori ez badauka
@@ -135,8 +136,8 @@ function gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia)
 		return False;
 	}	
 	
-	if($portada != '') //portada sartu badu
-		$bl['azkenIdPortada'] = $idPortada;
+	if(!$sartuta) //album berri bat sartu badu
+		$bl['azkenIdAlbuma'] = $idAlbum;
 	$bl['azkenIdAbestia'] = $idAbesti;
 
 	$domxml = new DOMDocument('1.0');

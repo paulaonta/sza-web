@@ -1,12 +1,12 @@
 <!ELEMENT egileak (egilea)>
-    <!ATTLIST egileak azkenIdPortada ID #REQUIRED>
+    <!ATTLIST egileak azkenIdAlbuma ID #REQUIRED>
     <!ATTLIST egileak azkenIdAbestia ID #REQUIRED>
     <!ELEMENT egilea (albuma)>
     <!ATTLIST egilea izenaEgile ID #REQUIRED>
         <!ELEMENT albuma (portada?, abestia+)>
         <!ATTLIST albuma izenaAlbum NMTOKEN #REQUIRED>
+        <!ATTLIST albuma albumaId ID #REQUIRED>
             <!ELEMENT portada (path+)>
-            <!ATTLIST portada portadaId ID #REQUIRED>
                 <!ELEMENT path(#PCDATA)>
             <!ELEMENT abestia (izenburua, data,path+)>
             <!ATTLIST abestia abestiaId NMTOKEN #REQUIRED>
