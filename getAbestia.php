@@ -1,5 +1,6 @@
 <?php
 $config = require ("./config.php");
+require_once 'dataFinder.inc';
 if(isset($_GET['id']) || isset($_GET['egilea']) && isset($_GET['albuma']) && isset($_GET['abestia'])){
 
     if(!file_exists('./data/musikantzun.xml')){
@@ -32,6 +33,7 @@ if(isset($_GET['id']) || isset($_GET['egilea']) && isset($_GET['albuma']) && iss
         $returnXML->addChild('egilea')->addAttribute('izenaEgile', $egilea['izenaEgile']);
         $albumXmlElement = $returnXML->addChild('albuma');
         $albumXmlElement->addAttribute('izenaAlbum', $albuma['izenaAlbum']);
+        $albumXmlElement->addAttribute('albumaId', $albuma['albumaId']);
         if(isset($albuma->portada) && isset($albuma->portada->path)){
             $albumXmlElement->addChild('portada', $config['album_path'].$albuma->portada->path[0]);
         }
@@ -44,88 +46,4 @@ if(isset($_GET['id']) || isset($_GET['egilea']) && isset($_GET['albuma']) && iss
     }
 }
 
-?>
-
-<?php
-
-    function getAbestiaId($datuakXml, $id){
-        foreach($datuakXml->children() as $egileElement){
-            foreach ($egileElement-> children() as $albumElement){
-                foreach ($albumElement-> abestia as $abestiElement){
-                    if($abestiElement['abestiaId'] == $id){
-                        $abestiData = array(
-                            'egilea' => $egileElement,
-                            'albuma' => $albumElement,
-                            'abestia' => $abestiElement
-                        );
-                        return $abestiData;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    function getAbestia($datuakXml, $egile, $album, $abesti){
-        $abestiaLortua = false;        
-        $egileElement = bilatuEgilea($datuakXml, $egile);
-        if($egileElement != null){
-            $albumElement = bilatuAlbumaOnEgilea($egileElement, $album);
-            if($albumElement != null){
-                $abestiElement = bilatuAbestiaOnAlbum($albumElement, $abesti);
-                if($abestiElement != null){
-                    $abestiaLortua = true;     
-                }
-            }
-        }
-
-        if($abestiaLortua){
-            $abestiData = array(
-                'egilea' => $egileElement,
-                'albuma' => $albumElement,
-                'abestia' => $abestiElement
-            );
-            return $abestiData;
-        }else{
-            return null;
-        }
-    }
-
-    function bilatuEgilea($egileakElement, $egileaIzen){
-        foreach($egileakElement->children() as $egileaElement){
-            if($egileaElement['izenaEgile'] == $egileaIzen){
-                return $egileaElement;
-            }
-        }
-        return null;
-    }
-
-    function bilatuAlbumaOnEgilea($egileElement, $albumIzen){
-        foreach ($egileElement-> children() as $albumElement){
-            if($albumElement['izenaAlbum'] == $albumIzen){
-                return $albumElement;
-            }
-        }
-        return null;
-    }
-
-    function bilatuAbestiaOnAlbum($albumElement, $abestiIzen){
-        foreach ($albumElement -> abestia as $abestiElement){
-            if($abestiElement->izenburua == $abestiIzen){
-                return $abestiElement;
-            }
-        }
-        return null;         
-    }
-
-    function bilatuAbestiaOnEgilea($egileElement, $abestiIzen){
-        foreach ($egileElement-> children() as $albumElement){
-            foreach ($albumElement-> abestia as $abestiElement){
-                if($abestiElement->izenburua == $abestiIzen){
-                    return $abestiElement;
-                }
-            }
-        }
-        return null;
-    }
 ?>

@@ -12,6 +12,7 @@ div#content{
   max-height: 100px;
   width: 100%;
   padding: 1vh;
+  background-color: #232323;
 }
 td#albumArgazkiTd{
     width: 1%;
@@ -42,4 +43,7 @@ div#abestiData {
 #erreproduktoreTd{
     width:70%;
     text-align: center;
+}
+#erreproduktoreTd audio{
+    width:90%;
 }

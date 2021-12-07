@@ -86,7 +86,7 @@ form input[type=submit]{
 	border: none;
 	margin: 20px;
  	font-size: 20px;
-	width: 100px;
+	width: 90%;
 	height: 40px;
 	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 	font-family: 'Montserrat', sans-serif;

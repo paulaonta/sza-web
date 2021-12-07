@@ -19,7 +19,6 @@ function entzunAbestia(id){
             $(data).find('path').each(function(){ //lortu Uneko abestiaren path-ak
                 var src = document.createElement('source');
                 src.setAttribute('src', $(this).text());
-                console.log(this);
                 $err.prepend(src);
             });
 
@@ -38,9 +37,9 @@ function entzunAbestia(id){
             $(document).find('#abestiIzen').text(abestiIzen);
             
             //Albumaren izena: Gorde atributu bezala abestiaren izenean
-            albumIzen = $(data).find('albuma').attr('izenaAlbuma');
-            $(document).find('#abestiIzen').attr('albumId', albumIzen);
-
+            albumId = $(data).find('albuma').attr('albumaId');
+            $(document).find('#abestiIzen').attr('albumaId', albumId);
+            $(document).find('#abestiIzen').click(ikusiAlbuma);
             //Album-aren portada lortu
             $portadaElem = $(data).find('portada');
             portadaPath = './data/unknown.png';
@@ -62,9 +61,52 @@ function entzunAbestia(id){
 
             $err[0].load();
 
-
-            //$err[0].play();
         }
 
+    });
+}
+function ikusiAlbuma(){
+    idAlbum = this.albumId;
+    $.ajax({
+        url: 'ikusiAlbuma.php',
+        type: 'GET',
+        success: function(data){
+            albumid
+
+        }
+    });
+}
+
+function filtratuAbestiak(data){
+    formData = document.getElementById('filterForm');
+    console.log(new FormData(data));
+    console.log(formData);  
+    $.ajax({
+        url: 'ikusiMusika.php',
+        type: 'POST',
+        data: formData,
+        success: function(data){
+            $(document).find('#abestiListaDiv').html(
+                $(data).find('#abestiListaDiv').html()
+            );
+            console.log(data);
+        }
+    });
+}
+
+function eguneratuTamainaTaulaHeader(){
+    // Change the selector if needed
+    var $table = $('#abestiTaula'),
+        $bodyCells = $table.find('tbody tr:first').children(),
+        colWidth;
+
+    // Get the tbody columns width array
+    colWidth = $bodyCells.map(function() {
+        return $(this).width();
+    }).get();
+
+    // Set the width of thead columns
+    $table.find('thead tr').children().each(function(i, v) {
+        $(v).width(colWidth[i]);
     });
 }

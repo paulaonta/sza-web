@@ -2,7 +2,7 @@
 $BL_FILE='./data/musikantzun.xml';		// Musika gordeko den fitxategia.
 $PORTADA = './data/album_portadak';     //Portadak gordeko den karpeta
 $ABESTIA = './data/musika';     //Abestiak gordeko den karpeta
-require_once("getAbestia.php");
+require_once('dataFinder.inc');
 
 function luzapen_egokia($fitxategia, $mota){
 	$luzapen =  explode('.', $fitxategia);
