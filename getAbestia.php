@@ -32,7 +32,7 @@ if(isset($_GET['id']) || isset($_GET['egilea']) && isset($_GET['albuma']) && iss
         $returnXML->addChild('izenburua', $abestia->izenburua);
         $returnXML->addChild('egilea')->addAttribute('izenaEgile', $egilea['izenaEgile']);
         $albumXmlElement = $returnXML->addChild('albuma');
-        $albumXmlElement->addAttribute('izenaAlbum', $albuma['izenaAlbum']);
+        $albumXmlElement->addAttribute('izenaAlbuma', $albuma['izenaAlbum']);
         $albumXmlElement->addAttribute('albumaId', $albuma['albumaId']);
         if(isset($albuma->portada) && isset($albuma->portada->path)){
             $albumXmlElement->addChild('portada', $config['album_path'].$albuma->portada->path[0]);

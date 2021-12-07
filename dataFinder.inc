@@ -33,6 +33,8 @@ function getAlbumId($datuakXml, $id){
     return null;
 }
 
+
+
 function getAbestia($datuakXml, $egile, $album, $abesti){
     $abestiaLortua = false;        
     $egileElement = bilatuEgilea($datuakXml, $egile);
@@ -76,6 +78,7 @@ function bilatuAlbumaOnEgilea($egileElement, $albumIzen){
     return null;
 }
 
+//Ez da erabiltzen: TODO
 function bilatuAbestiaOnAlbum($albumElement, $abestiIzen){
     foreach ($albumElement -> abestia as $abestiElement){
         if($abestiElement->izenburua == $abestiIzen){
@@ -94,6 +97,25 @@ function bilatuAbestiaOnEgilea($egileElement, $abestiIzen){
         }
     }
     return null;
+}
+
+
+function toTableSong($egileElement, $albumElement, $abestiElement ){
+    $egileIzen = $egileElement['izenaEgile'];
+    $albumIzen = $albumElement['izenaAlbum'];
+
+    $izenburua = $abestiElement->izenburua;
+    $abestiContent = $abestiElement->path;
+    $abestiPath = './data/musika/'.$abestiContent;
+    $abestiID = $abestiElement['abestiaId'];
+    $tableBody = "<tr>
+    <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$abestiID')\"/></td>
+    <td>$egileIzen</td>
+    <td>$albumIzen</td>
+    <td>$izenburua</td>
+                            
+    </tr>"; 
+    return $tableBody;
 }
 
 ?>

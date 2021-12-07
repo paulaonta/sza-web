@@ -2,7 +2,7 @@
 <head>
     <title>Musikantzun: musika entzun.</title>
     <meta charset="UTF-8">
-    <!--link rel="stylesheet" href="musika_igo.css" type="text/css"/-->   
+    <link rel="stylesheet" href="musika_igo.css" type="text/css"/>   
     <link rel="stylesheet" href="reproduktore.css" type="text/css"/>
     <link rel="stylesheet" href="abesti_lista.css" type="text/css"/>
     <script src="js/jquery.min.js"></script>
@@ -16,7 +16,9 @@
 </head>
 <body>
     <?php require 'html/nav.html' ?>
-<div class="content center" style="display:flex">
+    <?php require_once 'dataFinder.inc' ?>
+    <input type='button' value="Abesiti Guztiak" onclick='ikusiAbestiGuztiak()'/>
+<div id='maincontent' class="content center" style="display:flex">
     <div class = 'center' id='abestiListaDiv'>  
         <h1>Abestien lista:</h1>
         <?php getAbestienListaHTML();?>
@@ -24,9 +26,9 @@
     <div class = 'center'>
     <h1>Filtratu abestiak:</h1>
         <form id='filterForm' method='POST' enctype='multipart/form-data'>
-            <input id='abestiIzen' type='text' name='abestia' placeholder='Abestia'/><br>
-            <input id='albumIzen' type='text' name='albuma' placeholder='Albuma'/><br>
-            <input id='egileIzen' type='text' name='egilea' placeholder='Egilea'/><br>
+            <input id='abestiIzenInput' type='text' name='abestia' placeholder='Abestia'/><br>
+            <input id='albumIzenInput' type='text' name='albuma' placeholder='Albuma'/><br>
+            <input id='egileIzenInput' type='text' name='egilea' placeholder='Egilea'/><br>
             <input type='button' value='Filtratu' name='filtratu' onClick='filtratuAbestiak()'/>
         </form>
     </div>
@@ -49,7 +51,7 @@ function filterAll($xml, $egileIzen = null, $albumIzen = null, $abestiIzen){
     foreach ($xml-> children() as $egilea){
         if($egileIzen == null || strpos($egilea['izenaEgile'], $egileIzen) !== false){
             foreach ($egilea-> children() as $albuma){
-                if($albumIzen == null || strpos($egilea['izenaAlbum'], $albumIzen) !== false){
+                if($albumIzen == null || strpos($albuma['izenaAlbum'], $albumIzen) !== false){
                     foreach ($albuma -> abestia as $abestia){
                         if($abestiIzen == null || strpos($abestia->izenburua, $abestiIzen) !== false){
                             $tableBody = $tableBody.toTableSong($egilea, $albuma, $abestia);
@@ -62,24 +64,6 @@ function filterAll($xml, $egileIzen = null, $albumIzen = null, $abestiIzen){
     }
     return array('tableBody'=>$tableBody,
                 'abestiKop' =>$abestiKop);
-}
-
-function toTableSong($egileElement, $albumElement, $abestiElement ){
-    $egileIzen = $egileElement['izenaEgile'];
-    $albumIzen = $albumElement['izenaAlbum'];
-
-    $izenburua = $abestiElement->izenburua;
-    $abestiContent = $abestiElement->path;
-    $abestiPath = './data/musika/'.$abestiContent;
-    $abestiID = $abestiElement['abestiaId'];
-    $tableBody = "<tr>
-    <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$abestiID')\"/></td>
-    <td>$egileIzen</td>
-    <td>$albumIzen</td>
-    <td>$izenburua</td>
-                            
-    </tr>"; 
-    return $tableBody;
 }
 
 function getAbestienListaHTML(){

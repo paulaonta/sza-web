@@ -6,6 +6,7 @@ $(document).ready(function(){
         $('#playerStatus').hide();
     });
     $('.abestiInfo').css('visibility','hidden');
+    eguneratuTamainaTaulaHeader();
 });
 
 function entzunAbestia(id){
@@ -65,15 +66,30 @@ function entzunAbestia(id){
 
     });
 }
+
+function ikusiAbestiGuztiak(){
+    $.ajax({
+        url: 'ikusiMusika.php',
+        type: 'GET',
+        success: function(data){
+            $(document).find('#maincontent').html(
+               $(data).filter('#maincontent').html()
+            );
+            eguneratuTamainaTaulaHeader();
+        }
+    });
+}
+
 function ikusiAlbuma(){
-    idAlbum = this.albumId;
+    idAlbum = this.getAttribute("albumaid");
+    console.log(idAlbum);
     $.ajax({
         url: 'ikusiAlbum.php',
         type: 'GET',
-        data: {'albumId':idAlbum},
+        data: {'albumid':idAlbum},
         success: function(data){
-            $(document).find('#content').html(
-                $(data).find('#content').html()
+            $(document).find('#maincontent').html(
+                data
             );
         }
     });
@@ -82,15 +98,15 @@ function ikusiAlbuma(){
 function filtratuAbestiak(){
     formData = {};
 
-    abestiIzen = $(document).find('input#abestiIzen').val();
+    abestiIzen = $(document).find('input#abestiIzenInput').val();
     if(abestiIzen != ''){
         formData.abestia = abestiIzen;
     }
-    albumIzen = $(document).find('input#albumIzen').val();
+    albumIzen = $(document).find('input#albumIzenInput').val();
     if(albumIzen != ''){
         formData.albuma = albumIzen;
     }
-    egileIzen = $(document).find('input#egileIzen').val();
+    egileIzen = $(document).find('input#egileIzenInput').val();
     if(egileIzen != ''){
         formData.egilea = egileIzen;
     }
@@ -103,9 +119,10 @@ function filtratuAbestiak(){
             $(document).find('#abestiListaDiv').html(
                 $(data).find('#abestiListaDiv').html()
             );
-            console.log(data);
+            eguneratuTamainaTaulaHeader();
         }
     });
+    
 }
 
 function eguneratuTamainaTaulaHeader(){
@@ -123,8 +140,4 @@ function eguneratuTamainaTaulaHeader(){
     $table.find('thead tr').children().each(function(i, v) {
         $(v).width(colWidth[i]);
     });
-}
-
-function hasieratuErreproduktorea(){
-
 }
