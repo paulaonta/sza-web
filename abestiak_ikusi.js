@@ -68,19 +68,33 @@ function entzunAbestia(id){
 function ikusiAlbuma(){
     idAlbum = this.albumId;
     $.ajax({
-        url: 'ikusiAlbuma.php',
+        url: 'ikusiAlbum.php',
         type: 'GET',
+        data: {'albumId':idAlbum},
         success: function(data){
-            albumid
-
+            $(document).find('#content').html(
+                $(data).find('#content').html()
+            );
         }
     });
 }
 
-function filtratuAbestiak(data){
-    formData = document.getElementById('filterForm');
-    console.log(new FormData(data));
-    console.log(formData);  
+function filtratuAbestiak(){
+    formData = {};
+
+    abestiIzen = $(document).find('input#abestiIzen').val();
+    if(abestiIzen != ''){
+        formData.abestia = abestiIzen;
+    }
+    albumIzen = $(document).find('input#albumIzen').val();
+    if(albumIzen != ''){
+        formData.albuma = albumIzen;
+    }
+    egileIzen = $(document).find('input#egileIzen').val();
+    if(egileIzen != ''){
+        formData.egilea = egileIzen;
+    }
+    
     $.ajax({
         url: 'ikusiMusika.php',
         type: 'POST',
@@ -109,4 +123,8 @@ function eguneratuTamainaTaulaHeader(){
     $table.find('thead tr').children().each(function(i, v) {
         $(v).width(colWidth[i]);
     });
+}
+
+function hasieratuErreproduktorea(){
+
 }

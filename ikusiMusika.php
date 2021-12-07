@@ -22,9 +22,12 @@
         <?php getAbestienListaHTML();?>
     </div>
     <div class = 'center'>
+    <h1>Filtratu abestiak:</h1>
         <form id='filterForm' method='POST' enctype='multipart/form-data'>
-            <input type='text' name='abestia' placeholder='Abestia'/>
-            <input type='button' value='Filtratu' name='filtratu' onClick='filtratuAbestiak(this)'/>
+            <input id='abestiIzen' type='text' name='abestia' placeholder='Abestia'/><br>
+            <input id='albumIzen' type='text' name='albuma' placeholder='Albuma'/><br>
+            <input id='egileIzen' type='text' name='egilea' placeholder='Egilea'/><br>
+            <input type='button' value='Filtratu' name='filtratu' onClick='filtratuAbestiak()'/>
         </form>
     </div>
 

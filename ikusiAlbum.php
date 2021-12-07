@@ -27,7 +27,7 @@
         if(isset($albumData->portada->path[0])){
             $albumPortada = $albumData->portada->path[0];
         }
-        echo "<div>";
+        echo "<div id='content'>";
         echo "<img src='$albumPortada'/><div><h1>$albumIzen</h1></div>";
         echo "</div>";
 
