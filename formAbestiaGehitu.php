@@ -4,7 +4,7 @@
 		<title>Musikantzun: musika igo</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="musika_igo.css" type="text/css">
-		<script type="text/javascript" src="musika_igo.js"></script>
+		<script type="text/javascript" src="balidatu.js"></script>
 		<script type="text/javascript" src="animations.js"></script>
 		<style>
 			#addAbesti_menu{
@@ -21,7 +21,8 @@
 			<input type="text" id="izenburua" name="izenburua" class="txt_field" placeholder="Izenburua (*)" required>
 			<input type="text" name="egilea" class="txt_field" placeholder="Egilea(k) (*)" required> <br/>
 			<input type="text" name="albuma" class="txt_field" placeholder="Albuma"><br/><br/>
-			<label for="azala">Azala: </label><input id="azala" type="file" name="portada" accept=".png, .jpg, .jpeg" placeholder="Azala" class="fileHautatzaileak"><br/>
+			<label for="azala">Azala: </label><input id="azala" type="file" name="portada" accept=".png, .jpg, .jpeg" placeholder="Azala" class="fileHautatzaileak" onmouseenter='enterAzalaAlerta()' onmouseout="outAzalaAlerta()" ><br/>
+			<p id ="azalaAlerta">Gogoratu, album baten abestiak igotzean albumeko abesti batekin baino ez duzu azala igo behar. Bakarrik gordeko da igo duzun lehenengo azala!<p><br/>
 			<label for="abestia">Abestia (*): </label><input id="abestia" type="file" name="abestia" accept="audio/*" class="fileHautatzaileak"><br/>
 			<input type="submit" onclick="return balidatu(this.form);" value="Bidali">
 		</form>

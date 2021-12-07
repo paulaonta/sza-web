@@ -40,6 +40,7 @@ form{
 }
 
 form input::placeholder{
+	color:black;
 	font-size: 15px;
 	padding-left: 5px;
 }
@@ -317,4 +318,12 @@ form{
   
   .berriaAtzera:active {
 	background: white;
+  }
+
+  #azala, #abestia{
+	color: black;
+  } 
+
+  #azalaAlerta{
+	  display:none;
   }
