@@ -81,8 +81,14 @@ function ikusiAbestiGuztiak(){
 }
 
 function ikusiAlbuma(){
-    idAlbum = this.getAttribute("albumaid");
-    console.log(idAlbum);
+    
+}
+
+function ikusiAlbuma(id){
+    idAlbum = id;
+    if(typeof id === 'undefined'){
+        idAlbum = this.getAttribute("albumaid");
+    }
     $.ajax({
         url: 'ikusiAlbum.php',
         type: 'GET',
