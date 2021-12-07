@@ -29,10 +29,12 @@ img#albumArgazki{
 a#abestiIzen{
     font-weight: bolder;
 }
+
 a#egileIzen{
     font-style: italic;
 }
-#abestiData a:hover{
+
+#abestiIzen:hover{
     text-decoration: underline;
   }
 div#abestiData {
