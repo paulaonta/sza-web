@@ -308,7 +308,7 @@ form{
   }
 
   
-  .berriaAtzera:link, #berriaAtzera:visited, #berriaAtzera:focus {
+  .berriaAtzera:link, .berriaAtzera:visited, .berriaAtzera:focus {
 	background: #1DB954;
   }
   

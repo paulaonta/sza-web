@@ -32,15 +32,15 @@ function balidatu_berria($izenburua, $egilea, $portada, $abestia)
 {
 	$mezua = '';
 	if($izenburua == '')	// izenburua eremua ez da bete.
-		$mezua = $mezua.'<li>Izenburua eremua ez da bete.</li>';
+		$mezua = $mezua.'Izenburua eremua ez da bete.</br>';
 	if ($abestia == '') //abestia ez du sartu
-		$mezua = $mezua.'<li>Abestia eremua ez da bete.</li>';
+		$mezua = $mezua.'Abestia eremua ez da bete.</br>';
 	if(!luzapen_egokia($abestia,'audio'))	// Abestia eremua bete da, baina bere luzapena ez da zuzena.
-		$mezua = $mezua.'<li>Abestiaren luzapena ez da zuzena.</li>';
+		$mezua = $mezua.'Abestiaren luzapena ez da zuzena.</br>';
 	if($egilea == '')	// egilea eremua ez da bete.
-		$mezua = $mezua.'<li>Egilea(k) eremua ez da bete.</li>';
+		$mezua = $mezua.'Egilea(k) eremua ez da bete.</br>';
 	if($portada != '' && !luzapen_egokia($portada,'argazki'))	// Portada eremua bete da, baina bere luzapena ez da zuzena.
-		$mezua = $mezua.'<li>Portadaren argazkiaren luzapena ez da zuzena.</li>';
+		$mezua = $mezua.'Portadaren argazkiaren luzapena ez da zuzena.</br>';
 	return $mezua;
 }
 

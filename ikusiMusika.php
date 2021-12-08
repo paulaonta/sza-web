@@ -1,10 +1,10 @@
 <html>
 <head>
     <title>Musikantzun: musika entzun.</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="musika_igo.css" type="text/css"/>   
+    <meta charset="UTF-8"> 
     <link rel="stylesheet" href="reproduktore.css" type="text/css"/>
     <link rel="stylesheet" href="abesti_lista.css" type="text/css"/>
+    <link rel="stylesheet" href="musika_igo.css" type="text/css"/>  
     <script src="js/jquery.min.js"></script>
     <script src='abestiak_ikusi.js'></script>
     <style>
@@ -17,7 +17,7 @@
 <body>
     <?php require 'html/nav.html' ?>
     <?php require_once 'dataFinder.inc' ?>
-    <input type='button' value="Abesiti Guztiak" onclick='ikusiAbestiGuztiak()'/>
+    <input class='abesti' type='button' value="Abesti Guztiak" onclick='ikusiAbestiGuztiak()'/>
 <div id='maincontent' class="content center" style="display:flex">
     <div class = 'center' id='abestiListaDiv'>  
         <h1>Abestien lista:</h1>
@@ -29,7 +29,7 @@
             <input id='abestiIzenInput' type='text' name='abestia' placeholder='Abestia'/><br>
             <input id='albumIzenInput' type='text' name='albuma' placeholder='Albuma'/><br>
             <input id='egileIzenInput' type='text' name='egilea' placeholder='Egilea'/><br>
-            <input type='button' value='Filtratu' name='filtratu' onClick='filtratuAbestiak()'/>
+            <input class='abesti' type='button' value='Filtratu' name='filtratu' onClick='filtratuAbestiak()'/>
         </form>
     </div>
 

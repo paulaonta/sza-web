@@ -11,7 +11,7 @@
 	$errorea = balidatu_berria($izenburua, $egilea, $portada, $abestia);
 	if($errorea == ''){
 		if(!gorde_abestia($izenburua, $egilea, $albuma , $portada, $abestia))	// Gorde abestia datu basean (XML fitxategia).
-			$errorea = '<li>Ezin izan da abestia datu basean gorde.</li>';
+			$errorea = 'Ezin izan da abestia datu basean gorde.</br>';
 	}
 			
 ?>
