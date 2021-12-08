@@ -104,6 +104,7 @@ function toTableSong($egileElement, $albumElement, $abestiElement ){
     $egileIzen = $egileElement['izenaEgile'];
     $albumIzen = $albumElement['izenaAlbum'];
 
+    $albumId = $albumElement['albumaId'];
     $izenburua = $abestiElement->izenburua;
     $abestiContent = $abestiElement->path;
     $abestiPath = './data/musika/'.$abestiContent;
@@ -111,7 +112,7 @@ function toTableSong($egileElement, $albumElement, $abestiElement ){
     $tableBody = "<tr>
     <td><img class='playIcon' src='./data/playArrow.png' onClick=\"entzunAbestia('$abestiID')\"/></td>
     <td>$egileIzen</td>
-    <td>$albumIzen</td>
+    <td><h id='albumIzenTestua' onClick=\"ikusiAlbuma('$albumId')\">$albumIzen</h></td>
     <td>$izenburua</td>
                             
     </tr>"; 
