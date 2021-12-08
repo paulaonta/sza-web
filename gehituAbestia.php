@@ -19,8 +19,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="musika_igo.css" type="text/css">
-		<script type="text/javascript" src="animations.js"></script>
+		<link rel="stylesheet" href="css/musika_igo.css" type="text/css">
+		<script type="text/javascript" src="js/animations.js"></script>
 		<?php
 			if($errorea=='')
 				echo '<title>Zure abestia inolako arazorik gabe igo da.</title>';

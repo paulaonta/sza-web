@@ -1,0 +1,15 @@
+.center_menu_item{
+    text-decoration: none;
+    text-align: center;
+    margin: 50%;
+}
+
+.center_menu_item li:hover{
+    background: #1DB954;
+    color: #232323;
+}
+
+.center_menu_item li{
+    font-size: 3.5em;
+    color: #c0c0c0;
+}

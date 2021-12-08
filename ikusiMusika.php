@@ -2,11 +2,11 @@
 <head>
     <title>Musikantzun: musika entzun.</title>
     <meta charset="UTF-8"> 
-    <link rel="stylesheet" href="reproduktore.css" type="text/css"/>
-    <link rel="stylesheet" href="abesti_lista.css" type="text/css"/>
+    <link rel="stylesheet" href="css/reproduktore.css" type="text/css"/>
+    <link rel="stylesheet" href="css/abesti_lista.css" type="text/css"/>
     <link rel="stylesheet" href="musika_igo.css" type="text/css"/>  
     <script src="js/jquery.min.js"></script>
-    <script src='abestiak_ikusi.js'></script>
+    <script src='js/abestiak_ikusi.js'></script>
     <style>
         #showAbestiak_menu{
             color: white;

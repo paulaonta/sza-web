@@ -327,3 +327,8 @@ form{
   #azalaAlerta{
 	  display:none;
   }
+
+  .center_menu_item{
+	  text-decoration: none;
+	  list-style: none;
+  }

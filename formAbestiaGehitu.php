@@ -3,9 +3,9 @@
 	<head>
 		<title>Musikantzun: musika igo</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="musika_igo.css" type="text/css">
-		<script type="text/javascript" src="balidatu.js"></script>
-		<script type="text/javascript" src="animations.js"></script>
+		<link rel="stylesheet" href="css/musika_igo.css" type="text/css">
+		<script type="text/javascript" src="js/balidatu.js"></script>
+		<script type="text/javascript" src="js/animations.js"></script>
 		<style>
 			#addAbesti_menu{
 				color: white;
