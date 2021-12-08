@@ -10,7 +10,7 @@
     if(isset($_GET['albumid'])){
         $albumID = $_GET['albumid'];
         if(!file_exists('./data/musikantzun.xml')){
-            echo 'Ezinezkoa da abestiaren informazioa lortzea';
+            echo 'Ezinezkoa da albumaren informazioa lortzea';
             die();
         }
     
@@ -27,7 +27,7 @@
             $albumPortada = 'data/unknown.png';
             if(isset($albumData->portada->path[0])){
                 $albumPortada = $albumData->portada->path[0];
-                $albumPortada = $config['album_path'].$albumPortada;
+                $albumPortada = $config['album_path']."/".$albumPortada;
             }
             echo "<div id='maincontent' style='width: 100%'>";
             echo "<table style='width: 100%; display: table;'><tbody>";

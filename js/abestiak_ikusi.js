@@ -57,11 +57,8 @@ function entzunAbestia(id){
                 $playerStatus.css('color', 'red');
                 $playerStatus.show();
             }
-            
-
-
+        
             $err[0].load();
-
         }
 
     });
