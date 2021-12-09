@@ -1,7 +1,7 @@
 <?php
 $config = include ('config.php');
 $BL_FILE='./data/musikantzun.xml';		// Musika gordeko den fitxategia.
-$PORTADA = $config["portada_path"];     //Portadak gordeko den karpeta
+$PORTADA = $config["album_path"];     //Portadak gordeko den karpeta
 $ABESTIA = $config["audio_path"];     //Abestiak gordeko den karpeta
 require_once('dataFinder.inc');
 
