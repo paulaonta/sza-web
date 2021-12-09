@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE egileak SYSTEM "musikantzun.dtd">
+<egileak azkenIdAlbuma="5" azkenIdAbestia="5">
+  <egilea izenaEgile="Chopin">
+    <albuma albumaId="1" izenaAlbum="Chopin for Study">
+      <portada>
+        <path>1_istockphoto-1304652035-170667a.jpg</path>
+      </portada>
+      <abestia abestiaId="1">
+        <izenburua>Nocturne op.9 No.2</izenburua>
+        <data>Thu, 09 Dec 2021 22:54:13 +0100</data>
+        <path>1_Chopin - Nocturne op.9 No.2.mp3</path>
+      </abestia>
+    </albuma>
+  </egilea>
+  <egilea izenaEgile="Arthur">
+    <albuma albumaId="4" izenaAlbum="Tamagotchi">
+      <portada>
+        <path>4_images.png</path>
+      </portada>
+      <abestia abestiaId="4">
+        <izenburua>Tamagotchi</izenburua>
+        <data>Thu, 09 Dec 2021 23:08:00 +0100</data>
+        <path>4_Tamagotchi.mp3</path>
+      </abestia>
+    </albuma>
+  </egilea>
+  <egilea izenaEgile="Beethoven">
+    <albuma albumaId="5" izenaAlbum="Moonlight Sonata">
+      <portada>
+        <path>5_Captura.PNG</path>
+      </portada>
+      <abestia abestiaId="5">
+        <izenburua>Ilargite</izenburua>
+        <data>Thu, 09 Dec 2021 23:09:51 +0100</data>
+        <path>5_MoonlightSonata.mp3</path>
+      </abestia>
+    </albuma>
+  </egilea>
+</egileak>
