@@ -6,7 +6,7 @@ table#abestiTaula > thead, table#abestiTaula > tbody { display: block; }
 
 table#abestiTaula > tbody {
     max-height: 50vh;       /* Just for the demo          */
-    overflow-y: show;    /* Trigger vertical scroll    */
+    overflow-y: auto;    /* Trigger vertical scroll    */
     overflow-x: hidden;  /* Hide the horizontal scroll */
 }
 
@@ -43,5 +43,40 @@ table#abestiTaula tr{
     height: 2vh;
 }
 
+.abesti{
+    text-decoration: none;
+    font-size: 2.5em;
+    border-radius: 18px;
+    border: none;
+    background: #1DB954;
+    color: white;
+    width: 25%;
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: bold;
+}
 
+.abesti:hover{
+    background: #107232;
+}
 
+#filterForm{
+    width: 40vw;
+    height: 40vh;
+    margin-top: -20%;
+}
+
+#filterForm input[type=text]{
+    width: 90%;
+    border: solid black 1px;
+    height: 3em;
+    border-radius: 10px;
+    margin-top: 7%
+}
+
+#filterForm input[type=button]{
+    font-size: 2em;
+    position: relative;
+    bottom: -15%;
+}

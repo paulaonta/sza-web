@@ -20,6 +20,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/musika_igo.css" type="text/css">
+		<link rel="shortcut icon" type="image/jpg" href="icons/favicon.png">
 		<script type="text/javascript" src="js/animations.js"></script>
 		<?php
 			if($errorea=='')
@@ -39,13 +40,17 @@
 				echo('<img src="icons/txarto.png" alt="error">');
 				echo('<h1>Errore bat gertatu da abestia igotzean.</h1>');
 				echo("<ul>$errorea</ul>");
-				echo('<a href="formAbestiaGehitu.php" class = "berriaAtzera">Atzera joan</a>');
+				echo('<form class="transparentForm" action="formAbestiaGehitu.php">
+                          <input id="atzeraJoan" type="submit" value="Atzera joan" />
+                      </form>');
 			}
 			else
 			{
 				echo('<img src="icons/ongi.png" alt="ondo">');
 				echo('<h1>Eskerrik asko abestia igotzeagatik.</h1>');
-				echo('<a href="formAbestiaGehitu.php" class = "berriaAtzera">Atzera joan</a>');
+				echo('<form class="transparentForm" action="formAbestiaGehitu.php">
+                                                <input type="submit" value="Atzera joan" />
+                                            </form>');
 			}
 			?>
 		<p id="egileak_index" class="kredituak">Paula Ontalvilla, Mikel Laorden, Iñigo Gil</p>

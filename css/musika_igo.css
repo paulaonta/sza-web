@@ -36,7 +36,7 @@ form{
 	transform: translate(-50%, -5%);
 	width: 40%;
 	background: white;
-	border-radius: 7%;
+	border-radius: 30px;
 }
 
 form input::placeholder{
@@ -80,13 +80,29 @@ form label{
 	font-size: 17px;
 }
 
-form input[type=submit]{
+form input[type=submit], #atzeraJoan{
 	border-radius: 20px;
 	background-color: #1DB954;
 	color: white;
 	border: none;
 	margin: 20px;
  	font-size: 20px;
+	width: 90%;
+	height: 40px;
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+form input[type=submit]:hover{
+	border-radius: 20px;
+	background-color: #107232;
+	color: white;
+	border: none;
+	margin: 20px;
+	font-size: 20px;
 	width: 90%;
 	height: 40px;
 	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
@@ -282,6 +298,13 @@ form{
 	font-size: 20px;
 }
 
+.transparentForm{
+	background: #232323;
+	position: relative;
+	top: 5%
+
+}
+
 .infoIcon{
 	position: fixed;
 	bottom: 1.5%;
@@ -296,39 +319,16 @@ form{
 	right: -20%;
 }
 
-.berriaAtzera {
-	outline: none;
-	font-size: 2em;
-	width: 30%;
-	margin-right: 0.625%;
-	text-align: center;
-	line-height: 5;
-	color: white;
-	border-radius: 5%;
-  }
 
-  
-  .berriaAtzera:link, .berriaAtzera:visited, .berriaAtzera:focus {
-	background: #1DB954;
-  }
-  
-  .berriaAtzera:hover {
-	background: #107232;
-  }
-  
-  .berriaAtzera:active {
-	background: white;
-  }
+#azala, #abestia{
+color: black;
+}
 
-  #azala, #abestia{
-	color: black;
-  } 
+#azalaAlerta{
+  display:none;
+}
 
-  #azalaAlerta{
-	  display:none;
-  }
-
-  .center_menu_item{
-	  text-decoration: none;
-	  list-style: none;
-  }
+.center_menu_item{
+  text-decoration: none;
+  list-style: none;
+}

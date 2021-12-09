@@ -4,8 +4,9 @@
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="css/reproduktore.css" type="text/css"/>
     <link rel="stylesheet" href="css/abesti_lista.css" type="text/css"/>
-    <link rel="stylesheet" href="musika_igo.css" type="text/css"/>  
+    <link rel="stylesheet" href="css/musika_igo.css" type="text/css"/>
     <script src="js/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="icons/favicon.png">
     <script src='js/abestiak_ikusi.js'></script>
     <style>
         #showAbestiak_menu{
@@ -17,7 +18,7 @@
 <body>
     <?php require 'html/nav.html' ?>
     <?php require_once 'dataFinder.inc' ?>
-    <input class='abesti' type='button' value="Abesti Guztiak" onclick='ikusiAbestiGuztiak()'/>
+    <input class='abesti' type='button' value="Abesti guztiak" onclick='ikusiAbestiGuztiak()'/>
 <div id='maincontent' class="content center" style="display:flex">
     <div class = 'center' id='abestiListaDiv'>  
         <h1>Abestien lista:</h1>
@@ -89,7 +90,7 @@ function getAbestienListaHTML(){
         
     }
     if($abestiKop == 0){
-        echo '<h2>Oraindik ez dago abestirik</h2> <br> <a href="formAbestiaGehitu.php">Abesti bat gehitu!</a>';
+        echo '<h2>Oraindik ez dago abestirik</h2> <br> <a class="abesti" href="formAbestiaGehitu.php">Abesti bat gehitu!</a>';
     }else{
         ?>
             <table id='abestiTaula'class="center">

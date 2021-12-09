@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="css/musika_igo.css" type="text/css">
 		<script type="text/javascript" src="js/balidatu.js"></script>
 		<script type="text/javascript" src="js/animations.js"></script>
+		<link rel="shortcut icon" type="image/jpg" href="icons/favicon.png">
 		<style>
 			#addAbesti_menu{
 				color: white;
