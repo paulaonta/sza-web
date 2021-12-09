@@ -298,6 +298,13 @@ form{
 	font-size: 20px;
 }
 
+.transparentForm{
+	background: #232323;
+	position: relative;
+	top: 5%
+
+}
+
 .infoIcon{
 	position: fixed;
 	bottom: 1.5%;
