@@ -78,16 +78,6 @@ function bilatuAlbumaOnEgilea($egileElement, $albumIzen){
     return null;
 }
 
-//Ez da erabiltzen: TODO
-function bilatuAbestiaOnAlbum($albumElement, $abestiIzen){
-    foreach ($albumElement -> abestia as $abestiElement){
-        if($abestiElement->izenburua == $abestiIzen){
-            return $abestiElement;
-        }
-    }
-    return null;         
-}
-
 function bilatuAbestiaOnEgilea($egileElement, $abestiIzen){
     foreach ($egileElement-> children() as $albumElement){
         foreach ($albumElement-> abestia as $abestiElement){
