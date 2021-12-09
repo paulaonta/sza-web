@@ -40,7 +40,9 @@ function entzunAbestia(id){
             //Albumaren izena: Gorde atributu bezala abestiaren izenean
             albumId = $(data).find('albuma').attr('albumaId');
             $(document).find('#abestiIzen').attr('albumaId', albumId);
-            $(document).find('#abestiIzen').click(ikusiAlbuma);
+            $(document).find('#abestiIzen').click(function(){
+                ikusiAlbuma();
+            });
             //Album-aren portada lortu
             $portadaElem = $(data).find('portada');
             portadaPath = './data/unknown.png';
@@ -77,15 +79,12 @@ function ikusiAbestiGuztiak(){
     });
 }
 
-function ikusiAlbuma(){
-    
-}
-
 function ikusiAlbuma(id){
     idAlbum = id;
     if(typeof id === 'undefined'){
-        idAlbum = this.getAttribute("albumaid");
+        idAlbum = document.getElementById('abestiIzen').getAttribute("albumaid");
     }
+    console.log(idAlbum);
     $.ajax({
         url: 'ikusiAlbum.php',
         type: 'GET',
