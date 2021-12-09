@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/abesti_lista.css" type="text/css"/>
     <link rel="stylesheet" href="css/musika_igo.css" type="text/css"/>
     <script src="js/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/jpg" href="icons/favicon.png">
     <script src='js/abestiak_ikusi.js'></script>
     <style>
         #showAbestiak_menu{

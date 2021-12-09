@@ -20,6 +20,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/musika_igo.css" type="text/css">
+		<link rel="shortcut icon" type="image/jpg" href="icons/favicon.png">
 		<script type="text/javascript" src="js/animations.js"></script>
 		<?php
 			if($errorea=='')

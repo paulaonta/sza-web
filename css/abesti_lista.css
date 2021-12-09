@@ -64,7 +64,7 @@ table#abestiTaula tr{
 #filterForm{
     width: 40vw;
     height: 40vh;
-    margin-top: -20vh;
+    margin-top: -20%;
 }
 
 #filterForm input[type=text]{
